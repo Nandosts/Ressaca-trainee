@@ -1,0 +1,22 @@
+<h1>Novo usuário</h1>
+
+<% form_with model: @user do |user| %>
+  <div class="field">
+    <%= user.label :name, 'nome' %>
+    <%= user.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= user.label :email, 'email' %>
+    <%= user.email_field :email %>
+  </div>
+
+  <div class="field">
+    <%= user.label :password, 'senha' %>
+    <%= user.password_field :password %>
+  </div>
+
+  <div class="actions">
+    <%= user.submit "Criar usuário" %>
+  </div>
+<% end %>
