@@ -40,16 +40,16 @@ ActiveRecord::Schema.define(version: 2020_06_12_192351) do
     t.string "cep"
     t.string "address"
     t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_addresses_on_user_id"
   end
 
   create_table "drink_types", force: :cascade do |t|
     t.string "name"
     t.boolean "alcoholic?"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "products", force: :cascade do |t|
@@ -60,8 +60,8 @@ ActiveRecord::Schema.define(version: 2020_06_12_192351) do
     t.boolean "favorite"
     t.bigint "drink_types_id"
     t.text "description"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["drink_types_id"], name: "index_products_on_drink_types_id"
   end
 
@@ -72,8 +72,8 @@ ActiveRecord::Schema.define(version: 2020_06_12_192351) do
     t.string "name"
     t.boolean "admin?"
     t.float "money"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.string "remember_me_token"
     t.datetime "remember_me_token_expires_at"
     t.string "reset_password_token"

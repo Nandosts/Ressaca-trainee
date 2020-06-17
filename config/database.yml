@@ -9,8 +9,8 @@ default: &default
   host: 'localhost'
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: postgres
-  password: abacate
+  username: <%= ENV['postgres_user'] %>
+  password: <%= ENV['postgres_password'] %>
   timeout: 5000
 development:
   <<: *default
