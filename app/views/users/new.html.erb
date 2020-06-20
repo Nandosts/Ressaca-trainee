@@ -1,22 +1,24 @@
-<h1>Novo usuário</h1>
+<h1>Cadastrar Usuário</h1>
 
-<% form_with model: @user do |user| %>
+<%= form_with model: @user do |user| %>
   <div class="field">
-    <%= user.label :name, 'nome' %>
-    <%= user.text_field :name %>
+    <%= user.label :name, 'Nome' %>
+    <%= user.text_field :name, required: true %>
   </div>
 
   <div class="field">
-    <%= user.label :email, 'email' %>
-    <%= user.email_field :email %>
+    <%= user.label :email, 'Email' %>
+    <%= user.email_field :email, required: true %>
   </div>
 
   <div class="field">
-    <%= user.label :password, 'senha' %>
-    <%= user.password_field :password %>
+    <%= user.label :password, 'Senha' %>
+    <%= user.password_field :password, required: true %>
   </div>
 
   <div class="actions">
-    <%= user.submit "Criar usuário" %>
+    <%= user.submit "Cadastrar" %>
   </div>
 <% end %>
+
+<%= link_to "Home", root_path  %>
