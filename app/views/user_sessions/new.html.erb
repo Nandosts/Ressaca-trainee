@@ -1,0 +1,17 @@
+<h1>Logar</h1>
+
+<%= form_with url: :login, method: :post do |f| %>
+  <div class="field">
+    <%= f.label :email, 'E-mail:' %>
+    <%= f.email_field :email %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password, 'Senha:' %>
+    <%= f.password_field :password %>
+  </div>
+
+  <%= f.submit 'Logar' %>
+<% end %>
+
+<%= link_to 'Voltar', root_path %>

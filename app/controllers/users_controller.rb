@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
+    @user = User.find(params[:format])
   end
 
   def create
@@ -47,6 +47,6 @@ class UsersController < ApplicationController
 
   private
   def user_args
-    params.require('user').permit(:name, :password, :email)
+    params.require('user').permit(:name, :password, :email,  :password_confirmation)
   end
 end

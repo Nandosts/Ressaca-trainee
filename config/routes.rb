@@ -1,12 +1,10 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-
   root 'application#homepage'
-  resource :addresses, :users, :products
+  resource :addresses, :users, :products, :user_sessions
 
-  #Creating and renaming the main session's paths
-  resource :sessions
-  get '/log_in', to: 'sessions#new', as: :log_in
-  delete '/log_out', to: 'sessions#destroy', as: :log_out
-
+  scope 'user' do
+    get 'login', to: 'user_sessions#new', as: :login
+    post 'login', to: 'user_sessions#create'
+    post 'logout', to: 'user_sessions#destroy', as: :logout
+  end
 end
