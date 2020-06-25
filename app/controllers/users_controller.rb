@@ -4,7 +4,11 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:format])
+    @user = User.find(params[:id])
+  end
+
+  def show
+    @user = User.find(params[:id])
   end
 
   def create
@@ -15,7 +19,7 @@ class UsersController < ApplicationController
       redirect_to root_path
     rescue => err
       flash[:notice] = err
-      redirect_to new_users_path
+      redirect_to new_user_path
     end
   end
 
@@ -47,6 +51,6 @@ class UsersController < ApplicationController
 
   private
   def user_args
-    params.require('user').permit(:name, :password, :email,  :password_confirmation)
+    params.require('user').permit(:name, :password, :email, :password_confirmation)
   end
 end
