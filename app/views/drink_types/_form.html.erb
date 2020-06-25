@@ -1,0 +1,15 @@
+<%= form_with model: @drink_type do |form| %>
+    <div class="field">
+      <%= form.label :name, 'Nome' %>
+      <%= form.text_field :name %>
+    </div>
+  
+    <div class="field">
+      <%= form.label :alcoholic?, 'Bebida Alcoolica?' %>
+      <%= form.check_box :alcoholic? %>
+    </div>
+  
+    <div class="actions">
+      <%= form.submit "Confirmar" %>
+    </div>
+<% end %>
