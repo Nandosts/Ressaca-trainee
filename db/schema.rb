@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 2020_06_12_192351) do
 
   create_table "drink_types", force: :cascade do |t|
     t.string "name"
-    t.boolean "alcoholic?"
+    t.boolean "alcoholic"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

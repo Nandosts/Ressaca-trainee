@@ -1,4 +1,4 @@
 class DrinkType < ApplicationRecord
   has_many :products
-  validate :name, presence: true
+  validates :name, presence: true
 end

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root 'application#homepage'
-  resource :addresses, :products
+  resources :addresses, :users, :products, :drink_types
 
   scope 'user' do
     get 'login', to: 'user_sessions#new', as: :login

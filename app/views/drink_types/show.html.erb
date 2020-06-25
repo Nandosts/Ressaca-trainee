@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Detalhes do Tipo de Bebida</h1>
+
+<p>
+  <strong>Nome:</strong>
+  <%= @drink_type.name %>
+</p>
+
+<p>
+  <strong>Bebida Alcoolica?:</strong>
+  <%= human_boolean(@drink_type.alcoholic) %>
+</p>
+
+<p>
+  <strong>Adicionado em:</strong>
+  <%= @drink_type.created_at %>
+</p>
+
+<%= link_to 'Editar', edit_drink_type_path(@drink_type) %> |
+<%= link_to 'Deletar', drink_type_path(@drink_type), method: :delete, data: { confirm: 'Você tem certeza?' } %> |
+<%= link_to 'Ir Para Todas os Tipos de Bebida', drink_types_path %>
