@@ -1,0 +1,25 @@
+<%= form_with url: other do |user| %>
+  <div class="field">
+    <%= user.label :name, 'Nome' %>
+    <%= user.text_field :name, required: true %>
+  </div>
+
+  <div class="field">
+    <%= user.label :email, 'Email' %>
+    <%= user.email_field :email, required: true %>
+  </div>
+
+  <div class="field">
+    <%= user.label :password, 'Senha' %>
+    <%= user.password_field :password %>
+  </div>
+
+  <div class="field">
+    <%= user.label :password_confirmation, 'Confirmar Senha' %>
+    <%= user.password_field :password_confirmation %>
+  </div>
+
+  <div class="actions">
+    <%= user.submit "Cadastrar" %>
+  </div>
+<% end %>
