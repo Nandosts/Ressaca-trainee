@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Tipos de Bebidas Disponíveis</h1>
+
+<table>
+  <thead>
+  <tr>
+    <th>Nome</th>
+    <th>Alcoolica?</th>
+    <th colspan="5"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @drink_types.each do |drink_type| %>
+    <tr>
+      <td><%= drink_type.name %></td>
+      <td><%= human_boolean(drink_type.alcoholic) %></td>
+      <td><%= link_to 'Detalhes', drink_type_path(drink_type) %></td>
+      <td><%= link_to 'Editar', edit_drink_type_path(drink_type) %></td>
+      <td><%= link_to 'Deletar', drink_type_path(drink_type), method: :delete, data: { confirm: 'Você tem certeza?' } %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Novo Tipo de Bebida', new_drink_type_path %>

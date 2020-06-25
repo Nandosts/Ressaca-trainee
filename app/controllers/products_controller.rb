@@ -43,7 +43,7 @@ class ProductsController < ApplicationController
     def destroy
         product = Product.find(params[:id])
         begin
-            album.destroy!
+            product.destroy!
             flash[:notice] = "Produto #{product.name} apagado com sucesso!"
         rescue => err
             flash[:notice] = err
