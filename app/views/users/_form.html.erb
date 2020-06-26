@@ -1,4 +1,4 @@
-<%= form_with url: other do |user| %>
+<%= form_with model: other, url: another do |user| %>
   <div class="field">
     <%= user.label :name, 'Nome' %>
     <%= user.text_field :name, required: true %>
