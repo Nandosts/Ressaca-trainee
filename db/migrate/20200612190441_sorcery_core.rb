@@ -5,7 +5,7 @@ class SorceryCore < ActiveRecord::Migration[5.2]
       t.string :crypted_password
       t.string :salt
       t.string :name
-      t.boolean   :admin?
+      t.boolean :admin?
       t.float  :money
 
       t.timestamps                null: false
