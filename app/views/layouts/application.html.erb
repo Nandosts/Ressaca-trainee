@@ -7,19 +7,30 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <%= stylesheet_link_tag 'navbar'%>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@500&display=swap" rel="stylesheet"> 
+    
   </head>
 
-  <body>
-    <div id="nav">
-      <% if current_user %>
-        <%= link_to "View Profile", perfil_user_path(current_user.id) %>
-        <%= link_to "Logout", :logout, method: :post %>
-      <% else %>
-        <%= link_to "Register", new_user_path %>
-        <%= link_to "Login", '/user/login' %>
-      <% end %>
+<body>
+  <div class="nav">
+    <div class="logo">
+    <h4> {Ressaca Trainee} </h4>
     </div>
-    <%= flash[:notice] %>
+    <ul class="nav-links">
+      <li><a href="<%= root_path %>">Home</a></li>
+        <% if current_user %>
+          <li><a href="<%= perfil_user_path(current_user.id)%>">Perfil</a></li>
+          <%= link_to "Logout", :logout, method: :post %>
+        <% else %>
+          <li><a href="<%= new_user_path %>">Registrar</a></li>
+          <li><a href="<%= '/user/login' %>"> Login</a></li>
+        <% end %>
+    </ul>
+    </div>
+
+    <h3 style="color: red"><%= flash[:notice] %></h3>
     <%= yield %>
   </body>
 </html>

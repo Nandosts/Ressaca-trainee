@@ -40,16 +40,35 @@ ActiveRecord::Schema.define(version: 2020_06_26_205817) do
     t.string "cep"
     t.string "address"
     t.bigint "user_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_addresses_on_user_id"
+  end
+
+  create_table "albums", force: :cascade do |t|
+    t.string "album_name"
+    t.string "artist"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "drink_types", force: :cascade do |t|
     t.string "name"
-    t.boolean "alcoholic"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.boolean "alcoholic?"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "explicities", force: :cascade do |t|
+    t.string "explicity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "genders", force: :cascade do |t|
+    t.string "gender"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "products", force: :cascade do |t|
@@ -60,8 +79,8 @@ ActiveRecord::Schema.define(version: 2020_06_26_205817) do
     t.boolean "favorite"
     t.bigint "drink_types_id"
     t.text "description"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["drink_types_id"], name: "index_products_on_drink_types_id"
   end
 
@@ -82,6 +101,18 @@ ActiveRecord::Schema.define(version: 2020_06_26_205817) do
     t.index ["user_id"], name: "index_purchaces_on_user_id"
   end
 
+  create_table "songs", force: :cascade do |t|
+    t.string "name"
+    t.bigint "explicity_id"
+    t.bigint "gender_id"
+    t.bigint "album_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["album_id"], name: "index_songs_on_album_id"
+    t.index ["explicity_id"], name: "index_songs_on_explicity_id"
+    t.index ["gender_id"], name: "index_songs_on_gender_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", null: false
     t.string "crypted_password"
@@ -89,8 +120,8 @@ ActiveRecord::Schema.define(version: 2020_06_26_205817) do
     t.string "name"
     t.boolean "admin?"
     t.float "money"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "remember_me_token"
     t.datetime "remember_me_token_expires_at"
     t.string "reset_password_token"
@@ -112,4 +143,7 @@ ActiveRecord::Schema.define(version: 2020_06_26_205817) do
   add_foreign_key "purchace_products", "products"
   add_foreign_key "purchace_products", "purchaces"
   add_foreign_key "purchaces", "users"
+  add_foreign_key "songs", "albums"
+  add_foreign_key "songs", "explicities"
+  add_foreign_key "songs", "genders"
 end
