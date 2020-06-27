@@ -3,10 +3,10 @@ class UserSessionsController < ApplicationController
 
   def create
     if login(params[:email], params[:password])
-      flash[:success] = "Logado com sucesso"
+      flash[:notice] = "Logado com sucesso"
       redirect_to root_path
     else
-      flash[:error] = "Credenciais inválidas"
+      flash[:notice] = "Credenciais inválidas"
       render 'new'
     end
   end
