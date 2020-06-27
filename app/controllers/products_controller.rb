@@ -6,6 +6,7 @@ class ProductsController < ApplicationController
 
     def new
         @product = Product.new
+        @drink_types = DrinkType.all
     end
 
     def create
@@ -22,6 +23,7 @@ class ProductsController < ApplicationController
 
     def edit
         @product = Product.find(params[:id])
+        @drink_types = DrinkType.all
     end
 
     def update
@@ -48,7 +50,18 @@ class ProductsController < ApplicationController
         rescue => err
             flash[:notice] = err
         ensure
-            redirect_to root
+            redirect_to products_path
+        end
+    end
+
+    def favorite
+        product = Product.find(params[:id])
+        begin
+            product.update_attributes!(favorite: !product.favorite)
+        rescue => err
+            flash[:notice] = err
+        ensure
+            redirect_to products_path
         end
     end
 

@@ -1,0 +1,40 @@
+<%= form_with model: @product do |form| %>
+    <div class="field">
+      <%= form.label :name, 'Nome' %>
+      <%= form.text_field :name %>
+    </div>
+
+    <div class="field">
+      <%= form.label :value, 'Valor em Reais' %>
+      <%= form.number_field :value, min: 0, step: 0.01 %>
+    </div>
+
+    <div class="field">
+      <%= form.label :volume, 'Volume em mL' %>
+      <%= form.number_field :volume, min: 0, step: 1 %>
+    </div>
+
+    <div class="field">
+      <%= form.label :quantity, 'Quantidade' %>
+      <%= form.number_field :quantity, min: 0, step: 1 %>
+    </div>
+
+    <div class="field">
+      <%= form.label :drink_type_id, 'Tipo de Bebida' %>
+      <%= form.collection_select :drink_type_id, @drink_types, :id, :name, include_blank: true %>
+    </div>
+
+    <div class="field">
+      <%= form.label :description, 'Descrição do Produto' %>
+      <%= form.text_area :description %>
+    </div>
+
+    <div class="field">
+      <%= form.label :photo, 'Imagem do Produto' %>
+      <%= form.file_field :photo %>
+    </div>
+  
+    <div class="actions">
+      <%= form.submit "Confirmar" %>
+    </div>
+<% end %>

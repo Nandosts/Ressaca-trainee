@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Produtos Disponíveis</h1>
+
+<table>
+  <thead>
+  <tr>
+    <th>Nome</th>
+    <th>Valor</th>
+    <th>Volume (mL)</th>
+    <th>Tipo</th>
+    <th>Quantidade</th>
+    <th>Favorito</th>
+    <th colspan="9"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @products.each do |product| %>
+    <tr>
+      <td><%= product.name %></td>
+      <td><%= number_to_reais(product.value) %></td>
+      <td><%= product.volume %></td>
+      <td><%= product.drink_type.name %></td>
+      <td><%= product.quantity %></td>
+      <td><%= human_boolean(product.favorite) %></td>
+      <td><%= link_to 'Detalhes', product_path(product) %></td>
+      <td><%= link_to 'Favoritar', favorite_product_path(product), :method => :patch %></td>
+      <td><%= link_to 'Editar', edit_product_path(product) %></td>
+      <td><%= link_to 'Deletar', product_path(product), method: :delete, data: { confirm: 'Você tem certeza?' } %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Novo Tipo de Bebida', new_product_path %>

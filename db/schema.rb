@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2020_06_26_205817) do
+=======
+ActiveRecord::Schema.define(version: 2020_06_26_202523) do
+>>>>>>> Correçao de bugs e adiçao de views da Products
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,16 +44,16 @@ ActiveRecord::Schema.define(version: 2020_06_26_205817) do
     t.string "cep"
     t.string "address"
     t.bigint "user_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_addresses_on_user_id"
   end
 
   create_table "drink_types", force: :cascade do |t|
     t.string "name"
     t.boolean "alcoholic"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "products", force: :cascade do |t|
@@ -58,11 +62,11 @@ ActiveRecord::Schema.define(version: 2020_06_26_205817) do
     t.integer "volume"
     t.integer "quantity"
     t.boolean "favorite"
-    t.bigint "drink_types_id"
+    t.bigint "drink_type_id"
     t.text "description"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["drink_types_id"], name: "index_products_on_drink_types_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["drink_type_id"], name: "index_products_on_drink_type_id"
   end
 
   create_table "purchace_products", force: :cascade do |t|
@@ -89,8 +93,8 @@ ActiveRecord::Schema.define(version: 2020_06_26_205817) do
     t.string "name"
     t.boolean "admin?"
     t.float "money"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "remember_me_token"
     t.datetime "remember_me_token_expires_at"
     t.string "reset_password_token"
