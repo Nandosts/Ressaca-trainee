@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2020_06_26_205817) do
-=======
-ActiveRecord::Schema.define(version: 2020_06_26_202523) do
->>>>>>> Correçao de bugs e adiçao de views da Products
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -112,7 +108,7 @@ ActiveRecord::Schema.define(version: 2020_06_26_202523) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "addresses", "users"
-  add_foreign_key "products", "drink_types", column: "drink_types_id"
+  add_foreign_key "products", "drink_types"
   add_foreign_key "purchace_products", "products"
   add_foreign_key "purchace_products", "purchaces"
   add_foreign_key "purchaces", "users"
