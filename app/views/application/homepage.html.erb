@@ -1,2 +1,17 @@
-<%= link_to "Ver Produtos", products_path  %>
-<h3><%= link_to "Ver Tipos de Bebida", drink_types_path  %></h3>
+<h1>Nossos Produtos</h1>
+
+<% @records.each do |product| %>
+  <div class="card">
+    <%= image_tag product.photo %>
+    <div class="card-body">
+      <h5 class="card-title"><%= product.name %></h5>
+      <p class="card-text">
+        <strong>Preço:</strong> <%= product.value %><br>
+        <strong>Volume:</strong> <%= product.volume %> ml <br>
+      </p>
+      <a href="<%= product_path(product.id) %>" class="btn btn-primary">Saiba mais</a>
+    </div>
+  </div>
+<% end %>
+
+<%== pagy_nav(@pagy) %>

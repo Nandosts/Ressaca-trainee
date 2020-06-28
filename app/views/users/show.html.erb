@@ -11,3 +11,8 @@
     <%= current_user.email %>
   </p>
 </div>
+
+<% if current_user.admin %>
+  <%= link_to "Ver Produtos", products_path  %>
+  <%= link_to "Ver Tipos de Bebida", drink_types_path  %>
+<% end %>
