@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :require_login, only: :show
+
   def new
     @user = User.new
   end
@@ -7,9 +9,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  def show
-    @user = User.find(params[:id])
-  end
+  def show; end
 
   def create
     user = User.new(user_args)
@@ -52,5 +52,9 @@ class UsersController < ApplicationController
   private
   def user_args
     params.require(:user).permit(:name, :password, :email, :password_confirmation)
+  end
+
+  def not_authenticated
+    redirect_to login_path, alert: "Por Favor faça login"
   end
 end

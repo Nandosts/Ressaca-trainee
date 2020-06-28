@@ -21,7 +21,7 @@
     <ul class="nav-links">
       <li><a href="<%= root_path %>">Home</a></li>
         <% if current_user %>
-          <li><a href="<%= perfil_user_path(current_user.id)%>">Perfil</a></li>
+          <li><a href="<%= perfil_user_path%>">Perfil</a></li>
           <%= link_to "Logout", :logout, method: :post %>
         <% else %>
           <li><a href="<%= new_user_path %>">Registrar</a></li>
