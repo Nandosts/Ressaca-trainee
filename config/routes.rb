@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root 'application#homepage'
-  resources :addresses, :products, :drink_types
+  
+  resources :addresses, :drink_types
 
   scope 'user' do
     get 'login', to: 'user_sessions#new', as: :login
@@ -12,5 +13,9 @@ Rails.application.routes.draw do
     post 'novo', to: 'users#create'
     delete '/', to: 'users#destroy'
     get 'perfil(.:id)', to: 'users#show', as: :perfil_user
+  end
+
+  resources :products do
+    member { patch :favorite}
   end
 end
