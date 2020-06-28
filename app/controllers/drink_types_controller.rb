@@ -1,5 +1,6 @@
 class DrinkTypesController < ApplicationController
 
+    before_action :authorize_admin, only: [:new, :edit, :update, :destroy, :create]
     def index
         @drink_types = DrinkType.all
     end

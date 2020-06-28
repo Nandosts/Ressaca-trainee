@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_26_205817) do
+ActiveRecord::Schema.define(version: 2020_06_27_223916) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,16 +40,16 @@ ActiveRecord::Schema.define(version: 2020_06_26_205817) do
     t.string "cep"
     t.string "address"
     t.bigint "user_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_addresses_on_user_id"
   end
 
   create_table "drink_types", force: :cascade do |t|
     t.string "name"
     t.boolean "alcoholic"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "products", force: :cascade do |t|
@@ -58,11 +58,11 @@ ActiveRecord::Schema.define(version: 2020_06_26_205817) do
     t.integer "volume"
     t.integer "quantity"
     t.boolean "favorite"
-    t.bigint "drink_types_id"
+    t.bigint "drink_type_id"
     t.text "description"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["drink_types_id"], name: "index_products_on_drink_types_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["drink_type_id"], name: "index_products_on_drink_type_id"
   end
 
   create_table "purchace_products", force: :cascade do |t|
@@ -87,10 +87,10 @@ ActiveRecord::Schema.define(version: 2020_06_26_205817) do
     t.string "crypted_password"
     t.string "salt"
     t.string "name"
-    t.boolean "admin?"
+    t.boolean "admin"
     t.float "money"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "remember_me_token"
     t.datetime "remember_me_token_expires_at"
     t.string "reset_password_token"
@@ -108,7 +108,7 @@ ActiveRecord::Schema.define(version: 2020_06_26_205817) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "addresses", "users"
-  add_foreign_key "products", "drink_types", column: "drink_types_id"
+  add_foreign_key "products", "drink_types"
   add_foreign_key "purchace_products", "products"
   add_foreign_key "purchace_products", "purchaces"
   add_foreign_key "purchaces", "users"
