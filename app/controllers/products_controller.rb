@@ -1,8 +1,12 @@
 class ProductsController < ApplicationController
 
+
+    before_action :authorize_admin, only: [:new, :edit, :update, :destroy, :create, :favorite]
+
     def index
         @products = Product.all
     end
+
 
     def new
         @product = Product.new
