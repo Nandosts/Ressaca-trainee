@@ -13,6 +13,7 @@ class UsersController < ApplicationController
 
   def create
     user = User.new(user_args)
+    user.money = 0
     begin
       user.save!
       flash[:notice] = 'Usuário criado com sucesso!'
@@ -43,10 +44,20 @@ class UsersController < ApplicationController
   end
 
   def add_money
-    user = User.find(params[:id])
+    @user = current_user
+  end
+
+  def add_money_logic
+    @user = current_user
     begin
-      user.money = params[:money]
+      puts params
+      new_money = @user.money + params[:money].to_f
+      @user.update_attributes!(money: new_money)
+      redirect_to perfil_user_path
+    rescue => err
+      flash[:notice] = err
     end
+
   end
 
   private

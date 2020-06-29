@@ -13,6 +13,9 @@ Rails.application.routes.draw do
     post 'novo', to: 'users#create'
     delete '/', to: 'users#destroy'
     get 'perfil(.:id)', to: 'users#show', as: :perfil_user
+
+    get 'money', to: 'users#add_money', as: :money
+    post 'money', to: 'users#add_money_logic'
   end
 
   resources :products do
