@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  root 'products#search'
-  get 'search(.:type)(.:search)', to: 'products#search', as: :search
+  root 'application#homepage'
   
   resources :addresses, :drink_types
 

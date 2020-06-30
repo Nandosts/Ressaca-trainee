@@ -1,10 +1,5 @@
 class ApplicationController < ActionController::Base
-
-  include Pagy::Backend
-
-  def homepage
-    @pagy, @records = pagy(Product.all)
-  end
+  def homepage; end
 
   def authorize_admin
 

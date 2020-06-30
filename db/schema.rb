@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_28_185926) do
+ActiveRecord::Schema.define(version: 2020_06_27_223916) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,21 +65,21 @@ ActiveRecord::Schema.define(version: 2020_06_28_185926) do
     t.index ["drink_type_id"], name: "index_products_on_drink_type_id"
   end
 
-  create_table "purchase_products", force: :cascade do |t|
+  create_table "purchace_products", force: :cascade do |t|
     t.integer "quantity"
-    t.bigint "purchase_id"
+    t.bigint "purchace_id"
     t.bigint "product_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["product_id"], name: "index_purchase_products_on_product_id"
-    t.index ["purchase_id"], name: "index_purchase_products_on_purchase_id"
+    t.index ["product_id"], name: "index_purchace_products_on_product_id"
+    t.index ["purchace_id"], name: "index_purchace_products_on_purchace_id"
   end
 
-  create_table "purchases", force: :cascade do |t|
+  create_table "purchaces", force: :cascade do |t|
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_purchases_on_user_id"
+    t.index ["user_id"], name: "index_purchaces_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -109,7 +109,7 @@ ActiveRecord::Schema.define(version: 2020_06_28_185926) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "addresses", "users"
   add_foreign_key "products", "drink_types"
-  add_foreign_key "purchase_products", "products"
-  add_foreign_key "purchase_products", "purchases"
-  add_foreign_key "purchases", "users"
+  add_foreign_key "purchace_products", "products"
+  add_foreign_key "purchace_products", "purchaces"
+  add_foreign_key "purchaces", "users"
 end
