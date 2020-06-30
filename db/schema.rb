@@ -77,6 +77,7 @@ ActiveRecord::Schema.define(version: 2020_06_28_185926) do
 
   create_table "purchases", force: :cascade do |t|
     t.bigint "user_id"
+    t.boolean "bought"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_purchases_on_user_id"

@@ -7,7 +7,6 @@ class ApplicationController < ActionController::Base
   end
 
   def authorize_admin
-
     if current_user.nil?
       flash[:notice] = "É necessário logar para acessar essa página"
       redirect_to root_path

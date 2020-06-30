@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  get 'purchase_products/create'
+  get 'purchase_products/destroy'
+  get 'purchases/create'
+  get 'purchases/show'
+  get 'purchases/index'
   root 'products#search'
   get 'search(.:type)(.:search)', to: 'products#search', as: :search
   
