@@ -8,7 +8,7 @@
 
   <div class="field">
     <%= search.label :type, 'Tipo de bebidas' %>
-    <%= search.select :type, (@drink_types.collect { |drink_type| [drink_type.name, drink_type.id] }) << ['Selecionar', '0'] %>
+    <%= search.select :type, options_for_select((@drink_types.collect { |drink_type| [drink_type.name, drink_type.id] }) << ['Selecionar', '0'], 0) %>
   </div>
 
   <div class="actions">

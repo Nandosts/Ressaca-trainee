@@ -7,11 +7,11 @@ class ProductsController < ApplicationController
         if params[:type].nil? && params[:search].nil? or params[:search] == '' && params[:type] == ''
             @pagy, @records = pagy(Product.all)
         elsif params[:type] == "0"
-            @pagy, @records = pagy(Product.search(params[:search]))
-        elsif params[:search].nil? or params[:search] = ''
+            @pagy, @records = pagy(Product.search(params[:search].downcase))
+        elsif params[:search].nil? or params[:search] == ''
             @pagy, @records = pagy(DrinkType.find(params[:type]).products)
         else
-            @pagy, @records = pagy(DrinkType.find(params[:type]).products.search(params[:search]))
+            @pagy, @records = pagy(DrinkType.find(params[:type]).products.search(params[:search].downcase))
         end
         render 'search'
     end
@@ -85,8 +85,8 @@ class ProductsController < ApplicationController
     private
 
     def products_params
-        params.require('product').permit(:name, :value, :volume, :quantity, :favorite, :drink_type_id, :description, :photo)
-        params[:name] = params[:name].downcase
+        params['product'][:name] = params['product'][:name].downcase
+        return params.require('product').permit(:name, :value, :volume, :quantity, :favorite, :drink_type_id, :description, :photo)
     end
 
 end
