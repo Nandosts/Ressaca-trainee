@@ -1,0 +1,33 @@
+<h1>Nossos Produtos</h1>
+
+<%= form_with url: search_url, method: 'get', local: true do |search| %>
+  <div class="field">
+    <%= search.label :search, 'Nome do produto' %>
+    <%= search.text_field :search %>
+  </div>
+
+  <div class="field">
+    <%= search.label :type, 'Tipo de bebidas' %>
+    <%= search.select :type, (@drink_types.collect { |drink_type| [drink_type.name, drink_type.id] }) << ['Selecionar', '0'] %>
+  </div>
+
+  <div class="actions">
+    <%= search.submit 'Pesquisar' %>
+  </div>
+<% end %>
+
+<% @records.each do |product| %>
+  <div class="card">
+    <%= image_tag product.photo %>
+    <div class="card-body">
+      <h5 class="card-title"><%= product.name.capitalize %></h5>
+      <p class="card-text">
+        <strong>Preço:</strong> <%= product.value %><br>
+        <strong>Volume:</strong> <%= product.volume %> ml <br>
+      </p>
+      <a href="<%= product_path(product.id) %>" class="btn btn-primary">Saiba mais</a>
+    </div>
+  </div>
+<% end %>
+
+<%== pagy_nav(@pagy) %>

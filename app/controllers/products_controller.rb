@@ -1,7 +1,20 @@
 class ProductsController < ApplicationController
 
+    before_action :authorize_admin, except: [:show, :search]
 
-    before_action :authorize_admin, only: [:new, :edit, :update, :destroy, :create, :favorite]
+    def search
+        @drink_types = DrinkType.all
+        if params[:type].nil? && params[:search].nil? or params[:search] == '' && params[:type] == ''
+            @pagy, @records = pagy(Product.all)
+        elsif params[:type] == "0"
+            @pagy, @records = pagy(Product.search(params[:search]))
+        elsif params[:search].nil? or params[:search] = ''
+            @pagy, @records = pagy(DrinkType.find(params[:type]).products)
+        else
+            @pagy, @records = pagy(DrinkType.find(params[:type]).products.search(params[:search]))
+        end
+        render 'search'
+    end
 
     def index
         @products = Product.all
@@ -73,6 +86,7 @@ class ProductsController < ApplicationController
 
     def products_params
         params.require('product').permit(:name, :value, :volume, :quantity, :favorite, :drink_type_id, :description, :photo)
+        params[:name] = params[:name].downcase
     end
-    
+
 end
