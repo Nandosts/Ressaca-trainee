@@ -10,6 +10,12 @@
     <strong>E-mail</strong><br>
     <%= current_user.email %>
   </p>
+
+  <p>
+    <strong>Dinheiro</strong><br>
+    <%= current_user.money %>
+    <%= link_to 'Adicionar Fundos', money_path %>
+  </p>
 </div>
 
 <% if current_user.admin %>

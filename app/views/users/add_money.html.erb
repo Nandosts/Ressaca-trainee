@@ -1,0 +1,11 @@
+<%= form_with url: money_path, method: 'post' do |form| %>
+
+  <div class="field">
+    <%= form.label :money, 'Valor em Reais' %>
+    <%= form.number_field :money, min: 0, step: 0.01 %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Confirmar" %>
+  </div>
+<% end %>
