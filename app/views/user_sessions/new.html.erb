@@ -11,9 +11,9 @@
 <div class="box">
   <h1>Login</h1>
 <%= form_with url: :login, method: :post do |f| %>
-  <input type="email" placeholder="Username" class="field" <%= f.email_field :email %>>
+  <input type="email" placeholder="Username" class="field" <%= f.email_field :email %>
 
-  <input type="password" placeholder="Password" class="field" <%= f.password_field :password %>>
+  <input type="password" placeholder="Password" class="field" <%= f.password_field :password %>
 
   <%= f.submit 'Login' %>
 <% end %>

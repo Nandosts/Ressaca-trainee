@@ -11,13 +11,13 @@
 <div class="box">
   <h1>Registrar</h1>
   <%= form_with model: other, url: another do |user| %>
-    <input type="text" placeholder="Nome" class="field" <%= user.text_field :name, required: true %>>
+    <input type="text" placeholder="Nome" class="field" <%= user.text_field :name, required: true %>
     
-    <input type="email" placeholder="Email" class="field" <%= user.email_field :email, required: true %>>
+    <input type="email" placeholder="Email" class="field" <%= user.email_field :email, required: true %>
 
-    <input type="password" placeholder="Senha" class="field" <%= user.password_field :password %>>
+    <input type="password" placeholder="Senha" class="field" <%= user.password_field :password %>
     
-    <input type="password_confirmation" placeholder="Confirmar senha" class="field"<%= user.password_field :password_confirmation %>>    
+    <input type="password_confirmation" placeholder="Confirmar senha" class="field"<%= user.password_field :password_confirmation %>
 
     <%= user.submit "Cadastrar" %>
 <% end %>
