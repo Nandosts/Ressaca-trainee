@@ -21,4 +21,6 @@
 <% if current_user.admin %>
   <%= link_to "Ver Produtos", products_path  %>
   <%= link_to "Ver Tipos de Bebida", drink_types_path  %>
+<% else %>
+  <%= link_to "Seu Carrinho", cart_path %>
 <% end %>

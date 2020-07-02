@@ -1,0 +1,18 @@
+<% if @cart.products.nil? %>
+  <h1>Seu carrinho:</h1>
+  <% @cart.products.each do |product| %>
+    <div class="card">
+      <%= image_tag product.photo %>
+      <div class="card-body">
+        <h5 class="card-title"><%= product.name.capitalize %></h5>
+        <p class="card-text">
+          <strong>Preço:</strong> <%= product.value %><br>
+          <strong>Volume:</strong> <%= product.volume %> ml <br>
+        </p>
+        <a href="<%= product_path(product.id) %>" class="btn btn-primary">Saiba mais</a>
+      </div>
+    </div>
+  <% end %>
+<% else %>
+  <h3>Seu carrinho está vazio! Veja nossos produtos <%= link_to 'aqui', root_path %></h3>
+<% end %>
