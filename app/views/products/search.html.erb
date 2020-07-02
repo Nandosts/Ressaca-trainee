@@ -1,9 +1,10 @@
 <!doctype html>
 <html lang="en">
 
+<%= stylesheet_link_tag 'card' %>
 
 
-  <body>
+  <body style="background-color: #eee">
     <h1>Nossos Produtos</h1>
     <%= form_with url: search_url, method: 'get', local: true do |search| %>
       <div class="field">
@@ -20,7 +21,8 @@
         <%= search.submit 'Pesquisar' %>
       </div>
     <% end %>
-
+    
+<!--
 <h2 style="display: flex; justify-content:center; color: red; padding: 4% 0%;">Principais Produtos</h2>
 
 <div class="owl-carousel owl-theme">
@@ -34,6 +36,31 @@
     <% end %>
 
 </div>
+-->
+
+
+<!-- START PROJECTS SECTION -->
+
+<section id="produtos" class="produtos-section">
+  <div class="produtos-grid">
+  <% @records.each do |product| %>
+  <div class="product">
+    <div class="imgbox">
+      <%= image_tag product.photo, top: '30px', width: '90%', height: '80%'%>
+    </div>
+    <div class="specifice">
+      <h2><%= product.name.capitalize %></h2>
+      <div class="price">R$<%= product.value %></div>
+      <a href="<%= product_path(product.id) %>">Saiba mais</a>
+    </div>
+</div>
+
+  <% end %>
+    
+  </div>
+</section>
+
+<!-- END PROJECTS SECTION -->
 
     <%== pagy_nav(@pagy) %>
   </body>

@@ -1,0 +1,124 @@
+/* Custom properties/variables  */
+  /* Base reset */
+  * {
+    margin: 0;
+    padding: 0;
+  }
+  
+  
+  html {
+    box-sizing: border-box;
+  
+    scroll-behavior: smooth;
+  }
+  
+  
+  
+  /* Base styles */
+  
+  body {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    line-height: 1.4;
+    color: var(--main-white);
+  }
+    
+  /* produtos section */
+  
+  .produtos-section {
+    padding: 10rem 2rem;
+    background: var(--main-blue);
+  }
+    
+  /* "Automagic" image grid using no media queries */
+  .produtos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-gap: 4rem;
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    margin-bottom: 6rem;
+  }
+   
+body{
+    font-family: sans-serif;
+}
+
+.product{
+    display: relative;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 400px;
+    background: rgba(0,0,0,.001);
+    box-shadow: 0 20px 40px rgba(0,0,0,.2);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.product .imgbox{
+    height: 100%;
+    box-sizing: border-box;
+
+}
+.product .imgbox img{
+    display: block;
+    width: 80%;
+    margin: 10px auto 0;
+}
+
+.specifice{
+    position: absolute;
+    width: 100%;
+    bottom: -50px;
+    background: #fff;
+    padding: 10px;
+    box-sizing: border-box;
+    transition: .5s
+}
+
+.product:hover .specifice{
+    bottom: 0;
+}
+
+.specifice h2{
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    width: 100%;
+}
+
+.specifice .price{
+    position: absolute;
+    top: 1px;
+    right: 25px;
+    font-weight: bold;
+    color: #333;
+    font-size: 30px;   
+}
+
+.specifice a{
+    display: block;
+    padding: 5px;
+    color: #fff;
+    margin: 10px 0 0;
+    background: #45b90e;
+    text-align: center;
+    text-decoration: none;
+    transition: .02s;
+    font-size: 125%;
+    cursor: pointer;
+}
+
+.specifice a:hover{
+    background: #2dbff0;   
+}
+
+.alinhar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
