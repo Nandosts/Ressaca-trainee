@@ -8,7 +8,6 @@
   
   html {
     box-sizing: border-box;
-  
     scroll-behavior: smooth;
   }
   
@@ -20,15 +19,8 @@
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
     line-height: 1.4;
-    color: var(--main-white);
   }
     
-  /* produtos section */
-  
-  .produtos-section {
-    padding: 10rem 2rem;
-    background: var(--main-blue);
-  }
     
   /* "Automagic" image grid using no media queries */
   .produtos-grid {
@@ -36,7 +28,7 @@
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     grid-gap: 4rem;
     width: 100%;
-    max-width: 1280px;
+    max-width: 1857px;
     margin: 0 auto;
     margin-bottom: 6rem;
   }
@@ -94,7 +86,7 @@ body{
 .specifice .price{
     position: absolute;
     top: 1px;
-    right: 25px;
+    right: 10px;
     font-weight: bold;
     color: #333;
     font-size: 30px;   
