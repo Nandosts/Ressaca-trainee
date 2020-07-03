@@ -4,15 +4,37 @@ class ProductsController < ApplicationController
 
     def search
         @drink_types = DrinkType.all
-        if params[:type].nil? && params[:search].nil? or params[:search] == '' && params[:type] == ''
-            @pagy, @records = pagy(Product.all)
-        elsif params[:type] == "0"
-            @pagy, @records = pagy(Product.search(params[:search].downcase))
-        elsif params[:search].nil? or params[:search] == ''
-            @pagy, @records = pagy(DrinkType.find(params[:type]).products)
-        else
-            @pagy, @records = pagy(DrinkType.find(params[:type]).products.search(params[:search].downcase))
+
+        # Iniciando com todos os produtos
+        @filtered_products = Product.all
+
+        # Filtrando por nome na busca se necessário
+        if params[:search] != nil
+            @filtered_products = Product.search(params[:search])
         end
+
+        # Filtrando por preço se necessário
+        if params[:price] != '0' && params[:price] != nil
+
+            # Extraindo os limites do filtro de preço se selecionado
+            min, max = params[:price].split('-')
+
+            # Um valor máximo não foi informado
+            if(max == "MAX")
+                @filtered_products = Product.where("value > ?", min.to_i )
+            else
+                @filtered_products = Product.where(value: min.to_i..max.to_i)
+            end
+        end
+
+        # Filtrando por tipo de bebida se necessário
+        if params[:type] != nil && params[:type] != '0'
+            @filtered_products = @filtered_products.where(:drink_type_id => params[:type])
+        end
+
+        # Atualizando Pagy
+        @pagy, @records = pagy(@filtered_products)
+
         render 'search'
     end
 
