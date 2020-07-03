@@ -1,4 +1,4 @@
-<% if @cart.products.nil? %>
+<% if not @cart.products.nil? %>
   <h1>Seu carrinho:</h1>
   <% @cart.products.each do |product| %>
     <div class="card">
@@ -13,6 +13,7 @@
       </div>
     </div>
   <% end %>
+  <h4>Total: <%= number_to_reais(@cart.price) %></h4>
 <% else %>
   <h3>Seu carrinho está vazio! Veja nossos produtos <%= link_to 'aqui', root_path %></h3>
 <% end %>

@@ -38,6 +38,17 @@
   <%= human_boolean(@product.favorite) %>
 </p>
 
+<%= form_with url: buy_path(@product.id), local: true do |buy| %>
+  <div class="field">
+    <%= buy.label :quantity, 'Quantidade:' %>
+    <%= buy.number_field :quantity %>
+  </div>
+
+  <div class="actions">
+    <%= buy.submit 'Comprar' %>
+  </div>
+<% end %>
+
 <%= link_to 'Editar', edit_product_path(@product) %> |
 <%= link_to 'Deletar', product_path(@product), method: :delete, data: { confirm: 'Você tem certeza?' } %> |
 <%= link_to 'Ir Para Todas os Produtos', products_path %>

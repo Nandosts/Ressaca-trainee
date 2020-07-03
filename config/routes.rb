@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
-  get 'compra(.:id)', to: 'purchases#show', as: 'purchse_show'
-  get 'carrinho', to: 'purchases#cart', as: 'cart'
   root 'products#search'
+  get 'compra(.:id)', to: 'purchases#show', as: :purchase_show
+  get 'carrinho', to: 'purchases#cart', as: 'cart'
+  post 'buy_product(.:id)', to: 'purchase_products#create', as: :buy
+  post 'remove_product', to: 'purchase_products#destroy', as: :remove_product
   get 'search(.:type)(.:search)', to: 'products#search', as: :search
 
   resources :addresses, :drink_types

@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
   end
 
   def create_cart
-    cart = Purchase.new({user_id: current_user.id, bought: false})
+    cart = Purchase.new({user_id: current_user.id, bought: false, price: 0})
     cart.save
   end
 
