@@ -21,9 +21,9 @@ class ProductsController < ApplicationController
 
             # Um valor máximo não foi informado
             if(max == "MAX")
-                @filtered_products = Product.where("value > ?", min.to_i )
+                @filtered_products = @filtered_products.where("value > ?", min.to_i )
             else
-                @filtered_products = Product.where(value: min.to_i..max.to_i)
+                @filtered_products = @filtered_products.where(value: min.to_i..max.to_i)
             end
         end
 
