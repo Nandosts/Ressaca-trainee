@@ -1,15 +1,13 @@
-<% if not @cart.products.nil? %>
+<% if not @cart.products == [] %>
   <h1>Seu carrinho:</h1>
-  <% @cart.products.each do |product| %>
-    <div class="card">
-      <%= image_tag product.photo %>
-      <div class="card-body">
-        <h5 class="card-title"><%= product.name.capitalize %></h5>
-        <p class="card-text">
-          <strong>Preço:</strong> <%= product.value %><br>
-          <strong>Volume:</strong> <%= product.volume %> ml <br>
-        </p>
-        <a href="<%= product_path(product.id) %>" class="btn btn-primary">Saiba mais</a>
+  <% @cart.purchase_products.each do |product| %>
+    <div class="media">
+      <%= image_tag product.product.photo %>
+      <div class="media-body">
+        <h5 class="mt-0"><%= product.product.name %></h5>
+        Quantidade: <%= product.quantity %><br>
+        Custo: <%= product.product.value * product.quantity %><br>
+        <%= link_to 'Remover', buy_path(product.id), method: :delete %>
       </div>
     </div>
   <% end %>

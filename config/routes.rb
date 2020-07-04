@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get 'compra(.:id)', to: 'purchases#show', as: :purchase_show
   get 'carrinho', to: 'purchases#cart', as: 'cart'
   post 'buy_product(.:id)', to: 'purchase_products#create', as: :buy
-  post 'remove_product', to: 'purchase_products#destroy', as: :remove_product
+  delete 'buy_product(.:id)', to: 'purchase_products#destroy'
   get 'search(.:type)(.:search)', to: 'products#search', as: :search
 
   resources :addresses, :drink_types
@@ -16,12 +16,11 @@ Rails.application.routes.draw do
     post 'novo', to: 'users#create'
     delete '/', to: 'users#destroy'
     get 'perfil(.:id)', to: 'users#show', as: :perfil_user
-
     get 'money', to: 'users#add_money', as: :money
     post 'money', to: 'users#add_money_logic'
   end
 
   resources :products do
-    member { patch :favorite}
+    member { patch :favorite }
   end
 end
