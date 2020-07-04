@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   post 'buy_product(.:id)', to: 'purchase_products#create', as: :buy
   delete 'buy_product(.:id)', to: 'purchase_products#destroy'
   get 'search(.:type)(.:search)', to: 'products#search', as: :search
+  post 'update_product(.:id)', to: 'purchase_products#update', as: :update
 
   resources :addresses, :drink_types
 

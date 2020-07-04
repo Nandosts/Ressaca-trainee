@@ -36,6 +36,21 @@ class PurchaseProductsController < ApplicationController
     end
   end
 
+  def update
+    purchase_product = PurchaseProduct.find(params[:id])
+    change_price_tag(purchase_product.product, params[:quantity].to_i, purchase_product.quantity)
+    begin
+      purchase_product.update!(quantity: params[:quantity].to_i)
+      flash[:notice] = 'Carrinho atualizado com sucesso!'
+    rescue => err
+      change_price_tag(purchase_product.product, purchase_product.quantity, params[:quantity].to_i)
+      flash[:notice] = 'Algo deu errado!'
+      print err
+    ensure
+      redirect_to cart_path
+    end
+  end
+
   private
   def add_to_price_tag (product, quantity)
     cart = current_user.purchases.find_by(bought: false)
@@ -49,8 +64,17 @@ class PurchaseProductsController < ApplicationController
 
   def remove_from_price_tag (product, quantity)
     cart = current_user.purchases.find_by(bought: false)
-    print cart
     price_tag = cart.price - (product.value * quantity)
+    begin
+      cart.update!(price: price_tag)
+    rescue => err
+      print err
+    end
+  end
+
+  def change_price_tag (product, quantity, original_quantity)
+    cart = current_user.purchases.find_by(bought: false)
+    price_tag = cart.price + (product.value * (quantity - original_quantity))
     begin
       cart.update!(price: price_tag)
     rescue => err
