@@ -1,6 +1,7 @@
 class PurchasesController < ApplicationController
   before_action :require_login
   before_action :check_funds, only: :buy
+  before_action :check_stock, only: :buy
 
   def show
     @purchase = Purchase.find(params[:id])
@@ -18,6 +19,7 @@ class PurchasesController < ApplicationController
     cart = current_user.purchases.find_by(bought: false)
     price = cart.price
     pay_up(price)
+    change_stock(cart, true)
     begin
       cart.update!(bought: true)
       flash[:notice] = 'Compra realizada com sucesso!'
@@ -25,6 +27,7 @@ class PurchasesController < ApplicationController
       redirect_to root_path
     rescue => err
       print err
+      change_stock(cart, false)
       flash[:notice] = 'Algo deu errado!'
       redirect_to cart_path
     end
@@ -47,6 +50,43 @@ class PurchasesController < ApplicationController
       user.update!(money: result)
     rescue => err
       print err
+    end
+  end
+
+  def check_stock
+    flash[:notice] = ''
+    cart = current_user.purchases.find_by(bought: false)
+    cart.purchase_products.each do |associative|
+      available = associative.product.quantity
+      requested = associative.quantity
+      if requested > available
+        flash[:notice] << "Não pussimos #{associative.product.name} o suficiente para atender seu pedido \n"
+        redirect_to cart_path
+      end
+    end
+  end
+
+  def change_stock (cart, bool)
+    if bool
+      cart.purchase_products.each do |associative|
+        product = associative.product
+        new_quantity = product.quantity - associative.quantity
+        begin
+          product.update!(quantity: new_quantity)
+        rescue => err
+          print err
+        end
+      end
+    else
+      cart.purchase_products.each do |associative|
+        product = associative.product
+        new_quantity = product.quantity + associative.quantity
+        begin
+          product.update!(quantity: new_quantity)
+        rescue => err
+          print err
+        end
+      end
     end
   end
 end

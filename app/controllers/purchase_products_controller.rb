@@ -12,7 +12,7 @@ class PurchaseProductsController < ApplicationController
     begin
       purchase_product.save!
       flash[:notice] = 'Produto adicionado ao carrinho com sucesso!'
-      redirect_to root_path
+      redirect_to cart_path
     rescue => err
       print err
       remove_from_price_tag(Product.find(params[:id].to_f), params[:quantity].to_f)
@@ -27,12 +27,12 @@ class PurchaseProductsController < ApplicationController
     begin
       purchase_product.destroy!
       flash[:notice] = 'Produto retirado do carrinho com sucesso!'
+      redirect_to root_path
     rescue => err
       add_to_price_tag(purchase_product.product, purchase_product.quantity)
       flash[:notice] = 'Algo deu errado!'
       print err
-    ensure
-      redirect_to root_path
+      redirect_to cart_path
     end
   end
 
