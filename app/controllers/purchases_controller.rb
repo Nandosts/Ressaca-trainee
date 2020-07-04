@@ -56,13 +56,17 @@ class PurchasesController < ApplicationController
   def check_stock
     flash[:notice] = ''
     cart = current_user.purchases.find_by(bought: false)
+    control = false
     cart.purchase_products.each do |associative|
       available = associative.product.quantity
       requested = associative.quantity
       if requested > available
         flash[:notice] << "Não pussimos #{associative.product.name} o suficiente para atender seu pedido \n"
-        redirect_to cart_path
+        control = true
       end
+    end
+    if control
+      redirect_to cart_path
     end
   end
 
