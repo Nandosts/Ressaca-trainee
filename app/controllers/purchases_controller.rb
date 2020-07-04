@@ -12,7 +12,7 @@ class PurchasesController < ApplicationController
   end
 
   def index
-    @purchases = current_user.purchases.find_by(bought: true)
+    @purchases = current_user.purchases.where('bought = true')
   end
 
   def buy

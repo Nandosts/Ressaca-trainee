@@ -1,0 +1,21 @@
+<h1>Compras Antigas</h1>
+<table>
+  <thead>
+  <tr>
+    <th>Quantidade de produtos</th>
+    <th>Preço</th>
+    <th>Comprado em</th>
+    <th colspan="1"></th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @purchases.each do |purchase| %>
+    <tr>
+      <td><%= purchase.products.length %></td>
+      <td><%= purchase.price %></td>
+      <td><%= purchase.updated_at %></td>
+      <td><%= link_to 'Detalhes', purchase_show_path(purchase.id) %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

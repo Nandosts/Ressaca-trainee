@@ -4,10 +4,17 @@
     <div class="media">
       <%= image_tag product.product.photo %>
       <div class="media-body">
-        <h5 class="mt-0"><%= product.product.name %></h5>
-        Quantidade: <%= product.quantity %><br>
-        Custo: <%= product.product.value * product.quantity %><br>
+        <h5 class="mt-0"><%= product.product.name.capitalize %></h5>
+        <% if product.product.quantity < product.quantity %>
+          <div style="color: red">
+        <% else %>
+          <div>
+        <% end %>
+        Quantidade: <%= product.quantity %>
+        </div>
+        Disponível: <%= product.product.quantity %><br>
         <%= form_with url: update_path(product.id), local:  true do |update| %>
+      Custo: <%= product.product.value * product.quantity %><br>
           <div class="field">
             <%= update.label :quantity, 'Altere a quantidade:' %>
             <%= update.text_field :quantity, value: product.quantity %>

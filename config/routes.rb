@@ -1,14 +1,17 @@
 Rails.application.routes.draw do
   root 'products#search'
-  get 'compra(.:id)', to: 'purchases#show', as: :purchase_show
-  get 'carrinho', to: 'purchases#cart', as: 'cart'
-  post 'buy_product(.:id)', to: 'purchase_products#create', as: :buy
-  delete 'buy_product(.:id)', to: 'purchase_products#destroy'
-  get 'search(.:type)(.:search)', to: 'products#search', as: :search
-  post 'update_product(.:id)', to: 'purchase_products#update', as: :update
-  get 'buy_cart', to: 'purchases#buy', as: :buy_cart
-
   resources :addresses, :drink_types
+
+  scope 'compras' do
+    get 'compra(.:id)', to: 'purchases#show', as: :purchase_show
+    get 'carrinho', to: 'purchases#cart', as: 'cart'
+    post 'buy_product(.:id)', to: 'purchase_products#create', as: :buy
+    delete 'buy_product(.:id)', to: 'purchase_products#destroy'
+    get 'search(.:type)(.:search)', to: 'products#search', as: :search
+    post 'update_product(.:id)', to: 'purchase_products#update', as: :update
+    get 'buy_cart', to: 'purchases#buy', as: :buy_cart
+    get 'ComprasAntigas', to: 'purchases#index', as: :purchases_index
+  end
 
   scope 'user' do
     get 'login', to: 'user_sessions#new', as: :login
