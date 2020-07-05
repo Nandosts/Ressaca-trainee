@@ -7,7 +7,6 @@ class ApplicationController < ActionController::Base
   end
 
   def authorize_admin
-
     if current_user.nil?
       flash[:notice] = "É necessário logar para acessar essa página"
       redirect_to root_path
@@ -16,4 +15,10 @@ class ApplicationController < ActionController::Base
       redirect_to root_path
       end
   end
+
+  def create_cart
+    cart = Purchase.new({user_id: current_user.id, bought: false, price: 0})
+    cart.save
+  end
+
 end

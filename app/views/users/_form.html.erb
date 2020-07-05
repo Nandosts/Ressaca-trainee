@@ -1,25 +1,26 @@
-<%= form_with model: other, url: another do |user| %>
-  <div class="field">
-    <%= user.label :name, 'Nome' %>
-    <%= user.text_field :name, required: true %>
-  </div>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <%= stylesheet_link_tag 'login'%>
 
-  <div class="field">
-    <%= user.label :email, 'Email' %>
-    <%= user.email_field :email, required: true %>
-  </div>
+</head>
+<body>
 
-  <div class="field">
-    <%= user.label :password, 'Senha' %>
-    <%= user.password_field :password %>
-  </div>
 
-  <div class="field">
-    <%= user.label :password_confirmation, 'Confirmar Senha' %>
-    <%= user.password_field :password_confirmation %>
-  </div>
+<div class="box">
+  <h1>Registrar</h1>
+  <%= form_with model: other, url: another do |user| %>
+    <input type="text" placeholder="Nome" class="field" <%= user.text_field :name, required: true %>
+    
+    <input type="email" placeholder="Email" class="field" <%= user.email_field :email, required: true %>
 
-  <div class="actions">
+    <input type="password" placeholder="Senha" class="field" <%= user.password_field :password %>
+    
+    <input type="password" placeholder="Confirmar senha" class="field"<%= user.password_field :password_confirmation %>
+
     <%= user.submit "Cadastrar" %>
-  </div>
 <% end %>
+</div>
+</body>
+</html>

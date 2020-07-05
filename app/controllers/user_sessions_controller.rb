@@ -5,6 +5,9 @@ class UserSessionsController < ApplicationController
     if login(params[:email], params[:password])
       flash[:notice] = "Logado com sucesso"
       redirect_to root_path
+      if current_user.purchases.find_by(bought: false).nil?
+        create_cart
+      end
     else
       flash[:notice] = "Credenciais inválidas"
       render 'new'

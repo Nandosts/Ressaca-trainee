@@ -1,17 +1,24 @@
-<h1>Logar</h1>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <%= stylesheet_link_tag 'login'%>
 
+  </head>
+  <body>
+
+
+<div class="box">
+  <h1>Login</h1>
 <%= form_with url: :login, method: :post do |f| %>
-  <div class="field">
-    <%= f.label :email, 'E-mail:' %>
-    <%= f.email_field :email %>
-  </div>
+  <input type="email" placeholder="Username" class="field" <%= f.email_field :email %>
 
-  <div class="field">
-    <%= f.label :password, 'Senha:' %>
-    <%= f.password_field :password %>
-  </div>
+  <input type="password" placeholder="Password" class="field" <%= f.password_field :password %>
 
-  <%= f.submit 'Logar' %>
+  <%= f.submit 'Login' %>
 <% end %>
+</div>
 
-<%= link_to 'Voltar', root_path %>
+  </body>
+</html>
+
