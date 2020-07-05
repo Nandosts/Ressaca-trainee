@@ -51,7 +51,7 @@ class UsersController < ApplicationController
     @user = current_user
     begin
       puts params
-      new_money = @user.money + params[:money].to_f
+      new_money = @user.money.to_f + params[:money].to_f
       @user.update_attributes!(money: new_money)
       redirect_to perfil_user_path
     rescue => err
