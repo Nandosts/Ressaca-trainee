@@ -8,7 +8,7 @@
     </p>
   </div>
 
-  <div class="row justify-content-center">
+  <div class="container-fluid justify-content-center">
     <div class="col-md-4">
       <% if @product.photo.attached? %>
         <div>
@@ -18,25 +18,25 @@
     </div>
 
     <div class="col-md-6">
-      <div class="row product-name">
+      <div class="container-fluid product-name">
         <p><%= @product.name.capitalize %></p>
       </div>
-      <div class="row product-volume">
+      <div class="container-fluid product-volume">
         <p><%= "#{@product.volume} mL" %></p>
       </div>
-      <div class="row product-price">
+      <div class="container-fluid product-price">
         <h3><%= number_to_reais(@product.value) %></h3>
       </div>
-      <div class="row product-stock">
+      <div class="container-fluid product-stock">
         <p><strong>Quantidade Disponível:</strong> <%= @product.quantity %></p>
       </div>
-      <div class="row product-favorite">
+      <div class="container-fluid product-favorite">
         <p><strong>Favorito: </strong><%= human_boolean(@product.favorite) %></p>
       </div>
-      <div class="row">
+      <div class="container-fluid">
         <%= link_to 'Editar', edit_product_path(@product), :class => "btn btn-primary" %>
       </div>
-      <div class="row">
+      <div class="container-fluid">
         <%= link_to 'Deletar', product_path(@product), :class => "btn btn-danger mt-2", method: :delete, data: { confirm: 'Você tem certeza?' } %>
       </div>
     </div>
