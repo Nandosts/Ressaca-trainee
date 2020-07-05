@@ -1,9 +1,6 @@
 // Place all the styles related to the pro;r here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
-.product-information {
-
-}
 
 .product-name {
   font-size: 40px;
@@ -25,4 +22,16 @@
 
 #description-title {
   color: #5D4954;
+}
+
+.in-stock {
+  color: black;
+}
+
+.low-stock {
+  color: #dd3e3c;
+}
+
+.no-stock {
+  color: #e12216;
 }

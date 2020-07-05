@@ -1,37 +1,50 @@
 <div class="container">
+
   <div class="row">
     <p>
       <%= link_to 'Todos os Produtos', products_path %>
       <i class="fa fa-angle-right fa-1x"></i>
-      <%= @product.drink_type.name %>
+      <%= link_to @product.drink_type.name, search_path(@product.drink_type.id) %>
     </p>
   </div>
+
   <div class="row justify-content-center" id="product-information">
-    <div class="col-md-4 product-image">
+    <div class="col-md-4">
       <% if @product.photo.attached? %>
         <div>
-          <%= image_tag @product.photo, :class => 'img-fluid' %>
+          <%= image_tag @product.photo, :class => 'product-image img-fluid' %>
         </div>
       <% end %>
     </div>
-    <div class="col-md-6 product-information">
+
+    <div class="col-md-6">
       <div class="row product-name">
         <p><%= @product.name.capitalize %></p>
       </div>
       <div class="row product-volume">
         <p><%= "#{@product.volume} mL" %></p>
       </div>
-      <div class="row product-stock">
-        <p><%= stock_information(@product.quantity) %></p>
-      </div>
       <div class="row product-price">
         <h3><%= number_to_reais(@product.value) %></h3>
       </div>
+      <div class="row pb-0 product-stock">
+        <%= stock_information(@product.quantity) %>
+      </div>
       <div class="row product-purchase">
-        <button class="btn btn-primary">Adicionar ao Carrinho</button>
+        <%= form_with url: buy_path(@product.id), local: true do |buy| %>
+          <div class="field">
+            <%= buy.label :quantity, 'Quantidade:' %>
+            <%= buy.number_field :quantity, in: 0..(@product.quantity) %>
+          </div>
+
+          <div class="actions">
+            <%= buy.submit 'Adicionar ao Carrinho', :disabled => !@product.quantity?, class: "btn btn-primary" %>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
+  
   <div class="product-description">
     <h4 id="description-title">Descrição da Bebida</h4>
     <p id="description"><%= @product.description%></p>

@@ -3,14 +3,3 @@
 <% else %>
   <%= render 'show_user' %>
 <% end %>
-
-<%= form_with url: buy_path(@product.id), local: true do |buy| %>
-  <div class="field">
-    <%= buy.label :quantity, 'Quantidade:' %>
-    <%= buy.number_field :quantity %>
-  </div>
-
-  <div class="actions">
-    <%= buy.submit 'Comprar' %>
-  </div>
-<% end %>
