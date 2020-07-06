@@ -1,0 +1,16 @@
+<%= form_with model: @address do |form| %>
+    <div class="field">
+      <%= form.label :cep, 'CEP' %>
+      <%= form.text_field :cep %>
+    </div>
+
+    <div class="field">
+      <%= form.label :address, 'Endereço' %>
+      <%= form.text_field :address %>
+    </div>
+
+
+    <div class="actions">
+      <%= form.submit "Confirmar" %>
+    </div>
+<% end %>
