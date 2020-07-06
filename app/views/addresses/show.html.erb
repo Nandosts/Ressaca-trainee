@@ -1,0 +1,15 @@
+<h1>Página do Endereço</h1>
+
+<p>
+  <strong> CEP </strong> <br>
+    <%= @address.cep %>
+</p>
+
+<p>
+  <strong> Endereço </strong> <br>
+  <%= @address.address %>
+</p>
+
+<%= link_to 'Editar', edit_address_path(@address) %> |
+<%= link_to 'Deletar', address_path(@address), method: :delete, data: { confirm: 'Você tem certeza?' } %> |
+<%= link_to 'Voltar', perfil_user_path %>
