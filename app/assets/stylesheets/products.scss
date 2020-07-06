@@ -1,3 +1,35 @@
-// Place all the styles related to the products controller here.
+// Place all the styles related to the pro;r here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.product-name {
+  font-size: 40px;
+}
+
+.product-volume {
+  color: #2E2F30;
+  font-size: 20px;
+}
+
+.product-description {
+  border-style: solid;
+  border-width: 1px 0px 0px 0px;
+  margin-top: 10px;
+  padding-top: 10px;
+}
+
+#description-title {
+  color: #5D4954;
+}
+
+.in-stock {
+  color: #5c7b3d;
+}
+
+.low-stock {
+  color: #dd3e3c;
+}
+
+.no-stock {
+  color: #e12216;
+}

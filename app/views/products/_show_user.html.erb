@@ -1,0 +1,52 @@
+<div class="container">
+
+  <div class="row">
+    <p>
+      <%= link_to 'Todos os Produtos', root_path %>
+      <i class="fa fa-angle-right fa-1x"></i>
+      <%= link_to @product.drink_type.name, search_path(@product.drink_type.id) %>
+    </p>
+  </div>
+
+  <div class="row justify-content-center">
+    <div class="col-md-4">
+      <% if @product.photo.attached? %>
+        <div>
+          <%= image_tag @product.photo, :class => 'product-image img-fluid' %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="col-md-6">
+      <div class="container-fluid product-name">
+        <p><%= @product.name.capitalize %></p>
+      </div>
+      <div class="container-fluid product-volume">
+        <p><%= "#{@product.volume} mL" %></p>
+      </div>
+      <div class="container-fluid product-price">
+        <h3><%= number_to_reais(@product.value) %></h3>
+      </div>
+      <div class="container-fluid pb-0 product-stock">
+        <%= stock_information(@product.quantity) %>
+      </div>
+      <div class="container-fluid product-purchase">
+        <%= form_with url: buy_path(@product.id), local: true do |buy| %>
+          <div class="field">
+            <%= buy.label :quantity, 'Quantidade:' %>
+            <%= buy.number_field :quantity, in: 0..(@product.quantity) %>
+          </div>
+
+          <div class="actions">
+            <%= buy.submit 'Adicionar ao Carrinho', :disabled => !@product.quantity?, class: "btn btn-primary" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  
+  <div class="product-description">
+    <h4 id="description-title">Descrição da Bebida</h4>
+    <p id="description"><%= @product.description%></p>
+  </div>
+</div>

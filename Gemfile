@@ -66,3 +66,4 @@ gem 'sorcery'
 gem 'bootstrap', '~> 4.5.0'
 gem 'jquery-rails'
 gem 'owlcarousel-rails'
+gem "font-awesome-rails"

@@ -1,0 +1,51 @@
+<div class="container">
+
+  <div class="row">
+    <p>
+      <%= link_to 'Todos os Produtos', products_path %>
+      <i class="fa fa-angle-right fa-1x"></i>
+      <%= link_to @product.drink_type.name, search_path(@product.drink_type.id) %>
+    </p>
+  </div>
+
+  <div class="container-fluid justify-content-center">
+    <div class="col-md-4">
+      <% if @product.photo.attached? %>
+        <div>
+          <%= image_tag @product.photo, :class => 'product-image img-fluid' %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="col-md-6">
+      <div class="container-fluid product-name">
+        <p><%= @product.name.capitalize %></p>
+      </div>
+      <div class="container-fluid product-volume">
+        <p><%= "#{@product.volume} mL" %></p>
+      </div>
+      <div class="container-fluid product-price">
+        <h3><%= number_to_reais(@product.value) %></h3>
+      </div>
+      <div class="container-fluid product-stock">
+        <p><strong>Quantidade Disponível:</strong> <%= @product.quantity %></p>
+      </div>
+      <div class="container-fluid product-favorite">
+        <p><strong>Favorito: </strong><%= human_boolean(@product.favorite) %></p>
+      </div>
+      <div class="container-fluid">
+        <%= link_to 'Editar', edit_product_path(@product), :class => "btn btn-primary" %>
+      </div>
+      <div class="container-fluid">
+        <%= link_to 'Deletar', product_path(@product), :class => "btn btn-danger mt-2", method: :delete, data: { confirm: 'Você tem certeza?' } %>
+      </div>
+    </div>
+  </div>
+  
+  <div class="product-description">
+    <h4 id="description-title">Descrição da Bebida</h4>
+    <p id="description"><%= @product.description%></p>
+  </div>
+</div>
+
+<td></td>

@@ -1,54 +1,5 @@
-<h1>Página do Produto</h1>
-
-<h2>
-  <strong><%= @product.name %></strong>
-</h2>
-
-<% if @product.photo.attached? %>
-  <div>
-    <%= image_tag @product.photo %>
-  </div>
+<% if is_admin? == true %>
+  <%= render 'show_admin' %>
+<% else %>
+  <%= render 'show_user' %>
 <% end %>
-
-<p>
-  <strong><%= number_to_reais(@product.value) %></strong>
-</p>
-
-<p>
-  <strong><%= "#{@product.volume} mL" %></strong>
-</p>
-
-<p>
-  <strong>Tipo de Bebida:</strong>
-  <%= @product.drink_type.name %>
-</p>
-
-<p>
-  <strong>Descrição:</strong>
-  <%= @product.description %>
-</p>
-
-<p>
-  <strong>Quantidade Disponível:</strong>
-  <%= @product.quantity %>
-</p>
-
-<p>
-  <strong>Favorito:</strong>
-  <%= human_boolean(@product.favorite) %>
-</p>
-
-<%= form_with url: buy_path(@product.id), local: true do |buy| %>
-  <div class="field">
-    <%= buy.label :quantity, 'Quantidade:' %>
-    <%= buy.number_field :quantity %>
-  </div>
-
-  <div class="actions">
-    <%= buy.submit 'Comprar' %>
-  </div>
-<% end %>
-
-<%= link_to 'Editar', edit_product_path(@product) %> |
-<%= link_to 'Deletar', product_path(@product), method: :delete, data: { confirm: 'Você tem certeza?' } %> |
-<%= link_to 'Ir Para Todos os Produtos', products_path %>
