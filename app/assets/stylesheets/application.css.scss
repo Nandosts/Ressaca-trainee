@@ -12,9 +12,16 @@
  *
  *= require owl.carousel
  *= require owl.theme
- *= require_tree .
  *= require_self
  */
 
 @import "bootstrap";
 @import "font-awesome";
+
+body {
+  background: #9fb2b859;
+}
+
+*{
+  font-family:'Montserrat', sans-serif;
+}

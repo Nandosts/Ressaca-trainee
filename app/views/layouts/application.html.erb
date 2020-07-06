@@ -12,23 +12,25 @@
     <%= stylesheet_link_tag 'footer'%>
 
     <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+
   </head>
 
 <body>
 <div class="geral">
   <div class="nav">
     <div class="logo">
-    <h5> {Ressaca Trainee} </h5>
+      <a href="<%= root_path %>"><h5> {Ressaca Trainee} </h5></a>
     </div>
     <ul class="nav-links">
-      <li><a href="<%= root_path %>">Home</a></li>
+      <li><a href="<%= root_path %>"><i class="fa fa-home fa-2x"></i></a></li>
         <% if current_user %>
-          <li><a href="<%= perfil_user_path%>">Perfil</a></li>
-          <%= link_to "Logout", :logout, method: :post %>
+          <li><a href="<%= perfil_user_path%>"><i class="fa fa-2x fa-user"></i></a></li>
+          <li><%= link_to '<i class="fa fa-2x fa-sign-out"></i>'.html_safe,logout_path, method: :post %></li>
+          <li><a href="<%= cart_path %>"><i class="fa fa-shopping-cart fa-2x"></i></a></li>
         <% else %>
-          <li><a href="<%= new_user_path %>">Registrar</a></li>
-          <li><a href="<%= '/user/login' %>"> Login</a></li>
+          <li><a href="<%= new_user_path %>"><i class="fa fa-2x fa-user-plus"></i></a></li>
+          <li><a href="<%= '/user/login' %>"><i class="fa fa-2x fa-sign-in"></i></a></li>
         <% end %>
     </ul>
     </div>
