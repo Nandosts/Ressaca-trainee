@@ -9,4 +9,5 @@ class User < ApplicationRecord
 
   has_many :purchases
   has_many :address
+  has_one_attached :photo
 end

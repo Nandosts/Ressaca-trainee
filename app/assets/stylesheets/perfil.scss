@@ -1,0 +1,74 @@
+body{
+    margin: 0;
+    padding: 0;
+  }
+.box{
+  width: 660px;
+  padding: 40px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  background: #191919;
+  text-align: center;
+}
+.box h1{
+  color: white;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+p, th, tr, strong, h5 {
+    color: white;
+    font-weight: 400;
+}
+
+td {
+    padding-left: 12px;
+}
+
+
+.personal-image {
+  text-align: center;
+}
+.personal-image input[type="file"] {
+  display: none;
+}
+.personal-figure {
+  position: relative;
+  width: 200px;
+  height: 200px;
+}
+.personal-avatar {
+  cursor: pointer;
+  width: 200px;
+  height: 200px;
+  box-sizing: border-box;
+  border-radius: 100%;
+  border: 2px solid transparent;
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.2);
+  transition: all ease-in-out .3s;
+}
+.personal-avatar:hover {
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.5);
+}
+.personal-figcaption {
+  cursor: pointer;
+  position: absolute;
+  top: 0px;
+  width: inherit;
+  height: inherit;
+  border-radius: 100%;
+  opacity: 0;
+  background-color: rgba(0, 0, 0, 0);
+  transition: all ease-in-out .3s;
+}
+.personal-figcaption:hover {
+  opacity: 1;
+  background-color: rgba(0, 0, 0, .5);
+}
+.personal-figcaption > img {
+  margin-top: 40%;
+  width: 50px;
+  height: 50px;
+}
