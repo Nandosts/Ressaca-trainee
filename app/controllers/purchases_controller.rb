@@ -11,17 +11,13 @@ class PurchasesController < ApplicationController
     @cart = current_user.purchases.find_by(bought: false)
   end
 
-  def index
-    @purchases = current_user.purchases.where('bought = true')
-  end
-
-  def buy
-    cart = current_user.purchases.find_by(bought: false)
-    price = cart.price
+  def cart_post
+    @cart = current_user.purchases.find_by(bought: false)
+    price = @cart.price
     pay_up(price)
-    change_stock(cart, true)
+    change_stock(@cart, true)
     begin
-      cart.update!(bought: true)
+      @cart.update!(bought: true, address_id: params[:address_id])
       flash[:notice] = 'Compra realizada com sucesso!'
       create_cart
       redirect_to root_path
@@ -31,6 +27,14 @@ class PurchasesController < ApplicationController
       flash[:notice] = 'Algo deu errado!'
       redirect_to cart_path
     end
+  end
+
+  def index
+    @purchases = current_user.purchases.where('bought = true')
+  end
+
+  def buy(cart)
+
   end
 
   private

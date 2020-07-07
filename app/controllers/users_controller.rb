@@ -50,7 +50,6 @@ class UsersController < ApplicationController
   def add_money_logic
     @user = current_user
     begin
-      puts params
       new_money = @user.money.to_f + params[:money].to_f
       @user.update_attributes!(money: new_money)
       redirect_to perfil_user_path
