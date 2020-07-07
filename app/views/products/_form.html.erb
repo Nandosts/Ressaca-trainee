@@ -8,7 +8,7 @@
 <body>
 
 <div class="box">
-  <h1>Cadastrar Produto</h1>
+  <h1><%= @page_title %></h1>
   <%= form_with model: @product do |form| %>
       <input type="text" placeholder="Nome" class="field" <%= form.text_field :name, required: true %>
 
@@ -18,7 +18,7 @@
 
       <input type="number" placeholder="Quantidade" class="field" <%= form.number_field :quantity, min: 0, step: 1, required: true %>
 
-      <select type="text" name="Tipo de Bebida" class="field" <%= form.collection_select :drink_type_id, @drink_types, :id, :name, {:include_blank => "Tipo de Bebida"}, required: true %>
+      <%= form.collection_select :drink_type_id, @drink_types, :id, :name, {:include_blank => "Tipo de Bebida"}, required: true %>
 
       <textarea type="text_area" placeholder="Descrição do Produto" class="field" <input type="text" placeholder="Nome" class="field" <%= form.text_area :description %>
       

@@ -6,10 +6,12 @@ body{
 .box{
   width: 370px;
   padding: 40px;
-  position: absolute;
-  top: 60%;
-  left: 50%;
-  transform: translate(-50%,-50%);
+  margin-top: 40px;
+  margin-bottom: 40px;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
   background: #191919;
   text-align: center;
   z-index: 1;

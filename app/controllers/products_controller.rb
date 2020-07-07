@@ -46,6 +46,7 @@ class ProductsController < ApplicationController
     def new
         @product = Product.new
         @drink_types = DrinkType.all
+        @page_title = "Cadastrar Produto"
     end
 
     def create
@@ -63,6 +64,7 @@ class ProductsController < ApplicationController
     def edit
         @product = Product.find(params[:id])
         @drink_types = DrinkType.all
+        @page_title = "Editar Produto"
     end
 
     def update
