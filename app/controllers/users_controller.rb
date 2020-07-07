@@ -62,7 +62,7 @@ class UsersController < ApplicationController
 
   private
   def user_args
-    params.require(:user).permit(:name, :password, :email, :password_confirmation)
+    params.require(:user).permit(:name, :password, :email, :password_confirmation, :birthday)
   end
 
   def not_authenticated
