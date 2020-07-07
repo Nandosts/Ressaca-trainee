@@ -130,6 +130,7 @@
 # See https://ddnexus.github.io/pagy/extras#javascript
 # Rails.application.config.assets.paths << Pagy.root.join('javascripts')
 
+require 'pagy/extras/bootstrap'
 
 # I18n
 
