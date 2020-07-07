@@ -20,3 +20,6 @@ Rails.application.config.assets.precompile += %w( footer.scss )
 Rails.application.config.assets.precompile += %w( products.scss )
 Rails.application.config.assets.precompile += %w( perfil.scss )
 Rails.application.config.assets.precompile += %w( Mask.js )
+Rails.application.config.assets.precompile += %w( search.scss )
+Rails.application.config.assets.precompile += %w( search.js )
+
