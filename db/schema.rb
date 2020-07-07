@@ -93,6 +93,7 @@ ActiveRecord::Schema.define(version: 2020_07_06_151850) do
     t.string "name"
     t.boolean "admin"
     t.float "money"
+    t.date "birthday"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "remember_me_token"

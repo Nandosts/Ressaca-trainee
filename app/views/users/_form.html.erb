@@ -15,6 +15,8 @@
     
     <input type="email" placeholder="Email" class="field" <%= user.email_field :email, required: true %>
 
+    <input type="date" placeholder="Data de Nascimento" class="field" <%= user.date_field :birthday, required: true %>
+
     <input type="password" placeholder="Senha" class="field" <%= user.password_field :password %>
     
     <input type="password" placeholder="Confirmar senha" class="field"<%= user.password_field :password_confirmation %>
