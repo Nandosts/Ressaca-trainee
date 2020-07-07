@@ -42,7 +42,7 @@
 
     <div class="field">
       <%= form.label :address_id, 'Endereços' %>
-      <%= form.collection_select(:address_id, current_user.address.all, :id, :address) %>
+      <%= form.collection_select(:address_id, @user_addresses, :id, :address) %>
     </div>
 
     <div class="actions">

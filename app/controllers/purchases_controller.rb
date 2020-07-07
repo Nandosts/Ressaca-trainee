@@ -10,6 +10,7 @@ class PurchasesController < ApplicationController
 
   def cart
     @cart = current_user.purchases.find_by(bought: false)
+    @user_addresses = current_user.address.where(erased: false)
   end
 
   def buy
@@ -95,13 +96,9 @@ class PurchasesController < ApplicationController
     end
   end
 
-  # Método para verificar se o usuário tem um endereço cadastrado antes de efetuar uma compra
-  # Retorna true se o usuário não
+  # Método para verificar se o usuário tem um endereço cadastrado antes de efetuar uma compra.
   def check_address_exist
-    puts "\n#########################"
-    puts current_user.address.all
-    puts "#########################\n"
-    if Address.find_by(user_id: current_user.id) == nil
+    if Address.find_by(user_id: current_user.id, erased: false) == nil
       flash[:notice] = "Cadastre um endereço antes de concluir a compra!"
       redirect_to perfil_user_path
     end
