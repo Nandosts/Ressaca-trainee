@@ -23,6 +23,7 @@ Rails.application.routes.draw do
     get 'perfil(.:id)', to: 'users#show', as: :perfil_user
     get 'money', to: 'users#add_money', as: :money
     post 'money', to: 'users#add_money_logic'
+    patch 'perfil(.:id)', to: 'users#update', as: :update_perfil_user
   end
 
   resources :products do
