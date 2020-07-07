@@ -5,8 +5,8 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    min-height: 8vh;
-    background-color: #5D4954;
+    height: 7vh;
+    background-color: #670000;
     font-family: 'Libre Baskerville', serif;
 }
 
@@ -18,13 +18,25 @@
     font-size: 15px;
     justify-content: left;
     padding-right: 30%;
+    a {
+      color: rgb(41, 189, 248);
+    }
+    a:hover {
+      color: rgb(41, 189, 248);
+      text-decoration: none;
+    }
+
+    h5 {
+      margin: 0;
+    }
 }
 
 .nav-links{
     display: flex;
     align-items: center;
     justify-content: space-around;
-    width: 30%;
+    width: 45vh;
+    margin: 0;
 }
 
 .nav-links li{
@@ -33,8 +45,4 @@
 
 .nav-links a{
     color: white;
-    text-decoration: none;
-    letter-spacing: 3px;
-    font-weight: bold;
-    font-size: 14px;
 }
