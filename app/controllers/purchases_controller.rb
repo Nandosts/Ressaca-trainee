@@ -2,6 +2,7 @@ class PurchasesController < ApplicationController
   before_action :require_login
   before_action :check_funds, only: :buy
   before_action :check_stock, only: :buy
+  before_action :check_address_exist, only: :buy
 
   def show
     @purchase = Purchase.find(params[:id])
@@ -11,7 +12,7 @@ class PurchasesController < ApplicationController
     @cart = current_user.purchases.find_by(bought: false)
   end
 
-  def cart_post
+  def buy
     @cart = current_user.purchases.find_by(bought: false)
     price = @cart.price
     pay_up(price)
@@ -31,10 +32,6 @@ class PurchasesController < ApplicationController
 
   def index
     @purchases = current_user.purchases.where('bought = true')
-  end
-
-  def buy(cart)
-
   end
 
   private
@@ -97,4 +94,17 @@ class PurchasesController < ApplicationController
       end
     end
   end
+
+  # Método para verificar se o usuário tem um endereço cadastrado antes de efetuar uma compra
+  # Retorna true se o usuário não
+  def check_address_exist
+    puts "\n#########################"
+    puts current_user.address.all
+    puts "#########################\n"
+    if Address.find_by(user_id: current_user.id) == nil
+      flash[:notice] = "Cadastre um endereço antes de concluir a compra!"
+      redirect_to perfil_user_path
+    end
+  end
+
 end

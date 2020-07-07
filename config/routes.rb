@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     get 'compra(.:id)', to: 'purchases#show', as: :purchase_show
 
     get 'cart', to: 'purchases#cart', as: 'cart'
-    post 'cart', to: 'purchases#cart_post'
+    post 'cart', to: 'purchases#buy'
 
     post 'buy_product(.:id)', to: 'purchase_products#create', as: :buy
     delete 'buy_product(.:id)', to: 'purchase_products#destroy'

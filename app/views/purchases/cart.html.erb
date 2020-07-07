@@ -39,16 +39,17 @@
   <h4>Total: <%= number_to_reais(@cart.price) %></h4>
 
   <%= form_with url: cart_path, method: 'post' do |form| %>
+
     <div class="field">
       <%= form.label :address_id, 'Endereços' %>
       <%= form.collection_select(:address_id, current_user.address.all, :id, :address) %>
     </div>
+
     <div class="actions">
-      <%= form.submit "Confirmar" %>
+      <%= form.submit "Finalizar essa compra" %>
     </div>
   <% end %>
 
-  <h4><%= link_to 'Finalizar essa compra', buy_cart_path %></h4>
 <% else %>
   <h3>Seu carrinho está vazio! Veja nossos produtos <%= link_to 'aqui', root_path %></h3>
 <% end %>
