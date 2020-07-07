@@ -1,40 +1,31 @@
-<%= form_with model: @product do |form| %>
-    <div class="field">
-      <%= form.label :name, 'Nome' %>
-      <%= form.text_field :name %>
-    </div>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <%= stylesheet_link_tag 'product_form'%>
 
-    <div class="field">
-      <%= form.label :value, 'Valor em Reais' %>
-      <%= form.number_field :value, min: 0, step: 0.01 %>
-    </div>
+</head>
+<body>
 
-    <div class="field">
-      <%= form.label :volume, 'Volume em mL' %>
-      <%= form.number_field :volume, min: 0, step: 1 %>
-    </div>
+<div class="box">
+  <%= form_with model: @product do |form| %>
+      <input type="text" placeholder="Nome" class="field" <%= form.text_field :name, required: true %>
 
-    <div class="field">
-      <%= form.label :quantity, 'Quantidade' %>
-      <%= form.number_field :quantity, min: 0, step: 1 %>
-    </div>
+      <input type="number" placeholder="Valor" class="field" <%= form.number_field :value, min: 0, step: 0.01 %>
 
-    <div class="field">
-      <%= form.label :drink_type_id, 'Tipo de Bebida' %>
-      <%= form.collection_select :drink_type_id, @drink_types, :id, :name, include_blank: true %>
-    </div>
+      <input type="number" placeholder="Volume" class="field" <%= form.number_field :volume, min: 0, step: 1 %>
 
-    <div class="field">
-      <%= form.label :description, 'Descrição do Produto' %>
-      <%= form.text_area :description %>
-    </div>
+      <input type="number" placeholder="Quantidade" class="field" <%= form.number_field :quantity, min: 0, step: 1 %>
 
-    <div class="field">
-      <%= form.label :photo, 'Imagem do Produto' %>
-      <%= form.file_field :photo %>
-    </div>
-  
-    <div class="actions">
+      <select type="text" name="Tipo de Bebida" class="field" <%= form.collection_select :drink_type_id, @drink_types, :id, :name, {:prompt => "Tipo de Bebida"} %>
+
+      <textarea type="text_area" placeholder="Descrição do Produto" class="field" <input type="text" placeholder="Nome" class="field" <%= form.text_area :description %>
+
+      <input type="file" placeholder="Imagem" class="field" <%= form.file_field :photo %>
+    
       <%= form.submit "Confirmar" %>
-    </div>
-<% end %>
+  <% end %>
+</div>
+
+</body>
+</html>
