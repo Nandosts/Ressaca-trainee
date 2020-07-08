@@ -45,8 +45,8 @@
     <p >
       <strong style="color: lightgreen">Dinheiro:</strong><br>
       <%= number_to_reais(current_user.money) %><br>
-      <button type="button" id="add-funds-btn">Adicionar Fundos</button>
-      <div id="funds-form" style="display: none"><%= render 'add_money' %></div>
+      <button type="button" id="add-funds-btn" data-toggle="collapse" data-target="#funds-form" >Adicionar Fundos</button>
+      <div id="funds-form" class="collapse"><%= render 'add_money' %></div>
     </p>
     <strong style="color: lightgreen">Endereços:</strong><br>
     <table>
@@ -90,24 +90,6 @@
   display: none;
 }
 </style>
-
-<script>
-  $( document ).on('turbolinks:load',function(){
-    var add_funds_btn = document.getElementById('add-funds-btn');
-    var add_funds_form = document.getElementById('funds-form');
-
-    add_funds_btn.addEventListener('click', function(){
-      console.log(add_funds_form.style.display)
-      if(add_funds_form.style.display == 'none'){
-        add_funds_form.style.display = 'block';
-      }
-      else{
-        add_funds_form.style.display = 'none';
-      }
-
-    })
-  });
-</script>
 
 </body>
 </html>
