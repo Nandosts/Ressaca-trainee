@@ -60,12 +60,14 @@
 
       <tbody>
         <% current_user.address.each do |address| %>
-          <tr>
-            <td style="padding-left: 70px"><%= address.cep %></td>
-            <td><%= address.address %></td>
-            <td> <%= link_to 'Editar', edit_address_path(address) %> </td>
-            <td> <%= link_to 'Deletar', address_path(address), method: :delete, data: { confirm: 'Você tem certeza?' } %> </td>
-          </tr>
+          <% if address.erased == false%>
+            <tr>
+              <td style="padding-left: 70px"><%= address.cep %></td>
+              <td><%= address.address %></td>
+              <td> <%= link_to 'Editar', edit_address_path(address) %> </td>
+              <td> <%= link_to 'Deletar', address_path(address), method: :delete, data: { confirm: 'Você tem certeza?' } %> </td>
+            </tr>
+          <% end %>
         <% end %>
 
       </tbody>
