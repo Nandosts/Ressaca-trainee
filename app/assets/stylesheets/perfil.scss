@@ -72,3 +72,53 @@ td {
   width: 50px;
   height: 50px;
 }
+
+div #add-funds-btn{
+  margin-top: 3px;
+  border:0;
+  background: none;
+  text-align: center;
+  border: 2px solid #2ecc71;
+  padding: 4px 8px;
+  color: white;
+  border-radius: 24px;
+  transition: 0.25s;
+  cursor: pointer;
+}
+div #add-funds-btn:hover{
+  background: #2ecc71;
+}
+
+div input[type = "submit"]{
+  border:0;
+  background: none;
+  text-align: center;
+  border: 2px solid #2ecc71;
+  padding: 4px 8px;
+  margin-top: 2px;
+  outline: none;
+  color: white;
+  border-radius: 24px;
+  transition: 0.25s;
+  cursor: pointer;
+}
+div input[type = "submit"]:hover{
+  background: #2ecc71;
+}
+
+div input[type = "number"]{
+  border:0;
+  background: none;
+  text-align: center;
+  border: 2px solid #3498db;
+  padding: 4px 8px;
+  width: 150px;
+  outline: none;
+  color: white;
+  border-radius: 24px;
+  transition: 0.25s;
+}
+div input[type = "number"]:focus{
+  width: 200px;
+  border-color: #2ecc71;
+}
