@@ -7,6 +7,7 @@ class SorceryCore < ActiveRecord::Migration[5.2]
       t.string :name
       t.boolean :admin?
       t.float  :money
+      t.date   :birthday
 
       t.timestamps                null: false
     end

@@ -1,7 +1,9 @@
+<%= javascript_include_tag 'Mask' %>
+
 <%= form_with model: @address do |form| %>
     <div class="field">
       <%= form.label :cep, 'CEP' %>
-      <%= form.text_field :cep, required: true %>
+      <%= form.text_field :cep, class: 'cep', required: true %>
     </div>
 
     <div class="field">

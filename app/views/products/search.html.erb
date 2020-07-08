@@ -4,7 +4,7 @@
 <%= stylesheet_link_tag 'card' %>
 
 
-  <body style="background-color: #eee">
+  <body>
     <h1>Nossos Produtos</h1>
     <%= form_with url: search_url, method: 'get', local: true do |search| %>
       <div class="field">
@@ -55,7 +55,7 @@
     </div>
     <div class="specifice">
       <h2><%= product.name.capitalize %></h2>
-      <div class="price">R$<%= product.value %></div>
+      <div class="price"><%= number_to_reais(product.value) %></div>
       <a href="<%= product_path(product.id) %>">Saiba mais</a>
     </div>
 </div>
@@ -67,7 +67,9 @@
 
 <!-- END PROJECTS SECTION -->
 
-    <%== pagy_nav(@pagy) %>
+  <div style="display: flex; justify-content: center">
+    <%== pagy_bootstrap_nav(@pagy) %>
+  </div>
   </body>
 
   <script>

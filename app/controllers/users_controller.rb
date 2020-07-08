@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  def show; end
+  def show;  end
 
   def create
     user = User.new(user_args)
@@ -25,11 +25,11 @@ class UsersController < ApplicationController
   end
 
   def update
-    user = User.find(params[:id])
     begin
-      user.update!(user_args)
+      current_user.update!(user_args)
+      image_change(current_user)
       flash[:notice] = 'Usuário editado com sucesso'
-      redirect_to root_path
+      redirect_to perfil_user_path
     rescue => err
       flash[:notice] = err
     end
@@ -61,10 +61,20 @@ class UsersController < ApplicationController
 
   private
   def user_args
-    params.require(:user).permit(:name, :password, :email, :password_confirmation)
+    params.require(:user).permit(:name, :password, :email, :password_confirmation, :birthday)
   end
 
   def not_authenticated
     redirect_to login_path, alert: "Por Favor faça login"
+  end
+
+  def image_change(user)
+    imagem = params[:user][:photo]
+    unless imagem.nil?
+      if user.photo.attached?
+        user.photo.purge
+      end
+    user.photo.attach(imagem)
+    end
   end
 end

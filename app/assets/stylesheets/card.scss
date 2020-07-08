@@ -49,6 +49,7 @@ body{
     box-shadow: 0 20px 40px rgba(0,0,0,.2);
     border-radius: 5px;
     overflow: hidden;
+    background: #fff;
 }
 
 .product .imgbox{
@@ -66,7 +67,7 @@ body{
     position: absolute;
     width: 100%;
     bottom: -50px;
-    background: #fff;
+    background: #ddd;
     padding: 10px;
     box-sizing: border-box;
     transition: .5s
@@ -88,7 +89,7 @@ body{
     top: 1px;
     right: 10px;
     font-weight: bold;
-    color: #333;
+    color: #000;
     font-size: 30px;   
 }
 
