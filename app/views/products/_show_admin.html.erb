@@ -30,6 +30,9 @@
       <div class="container-fluid product-stock">
         <p><strong>Quantidade Disponível:</strong> <%= @product.quantity %></p>
       </div>
+      <div class="container-fluid change-stock" id="change-stock">
+        <button class="change-stock-button'">Mudar o estoque</button>
+      </div>
       <div class="container-fluid product-favorite">
         <p><strong>Favorito: </strong><%= human_boolean(@product.favorite) %></p>
       </div>
@@ -49,3 +52,16 @@
 </div>
 
 <td></td>
+
+<script>
+  let div = document.getElementById('change-stock')
+  function changeStock() {
+      div.innerHTML = '<%= form_with model: @product, local: true do |update| %>' +
+          '<%= update.label :quantity, 'Quantidade' %>' +
+          '<%= update.number_field :quantity, value: @product.quantity %>' +
+          '<%= update.submit %>' +
+          '<% end %>'
+      div.removeEventListener('click', changeStock)
+  }
+  div.addEventListener("click", changeStock)
+</script>

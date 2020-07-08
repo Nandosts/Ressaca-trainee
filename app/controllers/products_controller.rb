@@ -107,7 +107,9 @@ class ProductsController < ApplicationController
     private
 
     def products_params
-        params['product'][:name] = params['product'][:name].downcase
+        unless params['product'][:name].nil?
+            params['product'][:name] = params['product'][:name].downcase
+        end
         return params.require('product').permit(:name, :value, :volume, :quantity, :favorite, :drink_type_id, :description, :photo)
     end
 
