@@ -2,7 +2,7 @@
 <html lang="en">
 
 <%= stylesheet_link_tag 'card' %>
-
+<%= javascript_include_tag 'carousel' %>
 
   <body>
     <h1>Nossos Produtos</h1>
@@ -27,21 +27,32 @@
       </div>
     <% end %>
     
-<!--
+
 <h2 style="display: flex; justify-content:center; color: red; padding: 4% 0%;">Principais Produtos</h2>
 
 <div class="owl-carousel owl-theme">
-    <% @records.each do |product| %>
+    <% @records.where(favorite: 'yes').each do |product| %>
 
-    <div class="item"><%= image_tag product.photo, width: '300px', height: '400px'%>
-      <h4 class="card-title" style="display: flex; justify-content: center;"><%= product.name.capitalize %></h4>
-      <h5 style="display: flex; justify-content: center;">R$ <%= product.value %></h5>
-      <div style="display: flex; justify-content: center;"><a href="<%= product_path(product.id) %>" class="btn btn-success" >Saiba mais</a></div>
+  <section id="produtos" class="produtos-section">
+  <div class="produtos-grid">
+  <div class="product">
+    <div class="imgbox">
+      <%= image_tag product.photo, top: '30px', width: '90%', height: '80%'%>
     </div>
-    <% end %>
+    <div class="specifice">
+      <h2><%= product.name.capitalize %></h2>
+      <div class="price"><%= number_to_reais(product.value) %></div>
+      <a href="<%= product_path(product.id) %>">Saiba mais</a>
+    </div>
+</div>
+
+    
+  </div>
+</section>
+  <% end %>
 
 </div>
--->
+
 
 
 <!-- START PROJECTS SECTION -->
@@ -71,26 +82,5 @@
     <%== pagy_bootstrap_nav(@pagy) %>
   </div>
   </body>
-
-  <script>
-    $( document ).on('turbolinks:load',function(){
-      $('.owl-carousel').owlCarousel({
-          loop:true,
-          margin:10,
-          nav:true,
-          responsive:{
-              0:{
-                  items:1
-              },
-              600:{
-                  items:2
-              },
-              1000:{
-                  items:4
-              }
-          }
-      })
-    });
-  </script>
-
 </html>
+
