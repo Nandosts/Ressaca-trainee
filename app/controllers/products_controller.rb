@@ -33,7 +33,7 @@ class ProductsController < ApplicationController
         end
 
         # Atualizando Pagy
-        @pagy, @records = pagy(@filtered_products)
+        @pagy, @records = pagy(@filtered_products, items: 1)
 
         render 'search'
     end
