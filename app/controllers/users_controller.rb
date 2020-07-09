@@ -50,7 +50,6 @@ class UsersController < ApplicationController
   def add_money_logic
     @user = current_user
     begin
-      puts params
       new_money = @user.money.to_f + params[:money].to_f
       @user.update_attributes!(money: new_money)
       redirect_to perfil_user_path
@@ -62,7 +61,7 @@ class UsersController < ApplicationController
 
   private
   def user_args
-    params.require(:user).permit(:name, :password, :email, :password_confirmation)
+    params.require(:user).permit(:name, :password, :email, :password_confirmation, :birthday)
   end
 
   def not_authenticated

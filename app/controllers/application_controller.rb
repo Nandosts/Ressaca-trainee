@@ -21,4 +21,8 @@ class ApplicationController < ActionController::Base
     cart.save
   end
 
+  def calculate_age (date)
+    ((Time.zone.now - date.to_time) / 1.year.seconds).floor
+  end
+
 end

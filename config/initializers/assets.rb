@@ -22,4 +22,4 @@ Rails.application.config.assets.precompile += %w( perfil.scss )
 Rails.application.config.assets.precompile += %w( Mask.js )
 Rails.application.config.assets.precompile += %w( search.scss )
 Rails.application.config.assets.precompile += %w( search.js )
-
+Rails.application.config.assets.precompile += %w( product_form.scss )
