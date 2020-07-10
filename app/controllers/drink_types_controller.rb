@@ -7,6 +7,7 @@ class DrinkTypesController < ApplicationController
 
     def new
         @drink_type = DrinkType.new
+        @page_title = "Novo Tipo de Bebida"
     end
 
     def create
@@ -23,6 +24,7 @@ class DrinkTypesController < ApplicationController
 
     def edit
         @drink_type = DrinkType.find(params[:id])
+        @page_title = "Editar Tipo de Bebida"
     end
 
     def update

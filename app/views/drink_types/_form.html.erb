@@ -1,15 +1,25 @@
-<%= form_with model: @drink_type do |form| %>
-    <div class="field">
-      <%= form.label :name, 'Nome' %>
-      <%= form.text_field :name %>
-    </div>
-  
-    <div class="field">
-      <%= form.label :alcoholic?, 'Bebida Alcoolica?' %>
-      <%= form.check_box :alcoholic? %>
-    </div>
-  
-    <div class="actions">
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <%= stylesheet_link_tag 'drink_types'%>
+
+</head>
+<body>
+
+<div class="box">
+  <h1><%= @page_title %></h1>
+  <%= form_with model: @drink_type do |form| %>
+      <input type="text" placeholder="Nome" class="field" <%= form.text_field :name, required: true %>
+
+      <div class="field checkbox-field">
+        <%= form.label :alcoholic, 'Bebida Alcoolica?' %>
+        <%= form.check_box :alcoholic%>
+      </div>
+    
       <%= form.submit "Confirmar" %>
-    </div>
-<% end %>
+  <% end %>
+</div>
+
+</body>
+</html>

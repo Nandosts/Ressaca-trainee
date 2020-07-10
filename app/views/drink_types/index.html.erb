@@ -1,11 +1,13 @@
+<%= stylesheet_link_tag 'drink_types' %>
+
 <h1>Tipos de Bebidas Disponíveis</h1>
 
 <table>
   <thead>
   <tr>
-    <th>Nome</th>
-    <th>Alcoolica?</th>
-    <th colspan="5"></th>
+    <th scope="col">Nome</th>
+    <th scope="col">Alcoólica?</th>
+    <th scope="col">Ações</th>
   </tr>
   </thead>
 
@@ -14,12 +16,26 @@
     <tr>
       <td><%= drink_type.name %></td>
       <td><%= human_boolean(drink_type.alcoholic) %></td>
-      <td><%= link_to 'Detalhes', drink_type_path(drink_type) %></td>
-      <td><%= link_to 'Editar', edit_drink_type_path(drink_type) %></td>
-      <td><%= link_to 'Deletar', drink_type_path(drink_type), method: :delete, data: { confirm: 'Você tem certeza?' } %></td>
+      <td>
+        <%= link_to drink_type_path(drink_type) do %>
+          <button class="btn btn-primary"><i class="fa fa-eye"></i></button>
+        <% end %>
+        <%= link_to edit_drink_type_path(drink_type) do %>
+          <button class="btn btn-primary"><i class="fa fa-pencil-square-o"></i></button>
+        <% end %>
+        <%= link_to drink_type_path(drink_type), method: :delete, data: { confirm: 'Você tem certeza?' } do %>
+          <button class="btn btn-primary"><i class="fa fa-trash-o"></i></button>
+        <% end %>
+      </td>
     </tr>
   <% end %>
   </tbody>
+
+  <tfoot>
+        <tr>
+              <th><%= link_to 'Novo Tipo de Bebida', new_drink_type_path %></th>
+        </tr>
+    </tfoot>
 </table>
 
 <%= link_to 'Novo Tipo de Bebida', new_drink_type_path %>
