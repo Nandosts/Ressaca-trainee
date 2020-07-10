@@ -44,8 +44,9 @@
 
     <p >
       <strong style="color: lightgreen">Dinheiro:</strong><br>
-      R$<%= current_user.money %><br>
-      <%= link_to 'Adicionar Fundos', money_path %>
+      <%= number_to_reais(current_user.money) %><br>
+      <button type="button" id="add-funds-btn" data-toggle="collapse" data-target="#funds-form" >Adicionar Fundos</button>
+      <div id="funds-form" class="collapse"><%= render 'add_money' %></div>
     </p>
     <strong style="color: lightgreen">Endereços:</strong><br>
     <table>

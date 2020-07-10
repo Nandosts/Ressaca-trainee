@@ -115,3 +115,43 @@ body{
     justify-content: center;
     align-items: center;
 }
+
+.owl-carousel {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 50px;
+    max-width: 70%;
+    left: 15%;
+}
+
+.owl-carousel {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 50px;
+    max-width: 70%;
+    left: 15%;
+}
+
+.owl-prev,
+.owl-next {
+  position: absolute;
+  top: 30%;
+  transform: translateY(-50%);
+  width: 50px;
+  height: 50px;
+}
+
+.owl-prev {
+  color: white;
+  left: -2rem;
+}
+
+.owl-next {
+  right: -2rem;
+}

@@ -70,6 +70,7 @@ class ProductsController < ApplicationController
     def new
         @product = Product.new
         @drink_types = DrinkType.all
+        @page_title = "Cadastrar Produto"
     end
 
     def create
@@ -87,6 +88,7 @@ class ProductsController < ApplicationController
     def edit
         @product = Product.find(params[:id])
         @drink_types = DrinkType.all
+        @page_title = "Editar Produto"
     end
 
     def update
@@ -131,7 +133,9 @@ class ProductsController < ApplicationController
     private
 
     def products_params
-        params['product'][:name] = params['product'][:name].downcase
+        unless params['product'][:name].nil?
+            params['product'][:name] = params['product'][:name].downcase
+        end
         return params.require('product').permit(:name, :value, :volume, :quantity, :favorite, :drink_type_id, :description, :photo)
     end
 
