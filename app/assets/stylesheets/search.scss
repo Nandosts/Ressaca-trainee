@@ -1,0 +1,54 @@
+.popup{
+    position: fixed;
+    top: 0; bottom: 0; 
+    left: 0; right:0;
+    margin: auto;
+    width: 100vw;
+    height: 100vh;
+    padding: 15px;
+    border: none;
+    z-index:2000;
+    display: flexbox;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.4);
+  }
+  .box, .pesquisar{
+    border:0;
+    background: white;
+    display: block;
+    margin: 40px auto 0px;
+    text-align: center;
+    border: 1px solid;
+    padding: 8px 10px;
+    width: 700px;
+    outline: none;
+    color: black;
+    border-radius: 24px;
+  }
+
+  .pesquisar{
+    max-width: 150px;
+    border: none;
+  }
+  
+  .textoPopup{
+    top: 27%;
+    left: 30%;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45%;
+    min-width: 400px;
+    height: 300px;
+    font-weight: bolder;
+    color: black;
+    background-color: lightgray;
+  }
+
+  .select{
+    padding-left: 120px;
+    display: flex;
+    justify-content: space-between;
+  }
