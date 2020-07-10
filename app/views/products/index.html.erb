@@ -23,7 +23,11 @@
       <td><%= product.quantity %></td>
       <td><%= human_boolean(product.favorite) %></td>
       <td><%= link_to 'Detalhes', product_path(product) %></td>
-      <td><%= link_to 'Favoritar', favorite_product_path(product), :method => :patch %></td>
+      <% if product.favorite %>
+        <td><%= link_to 'Desfavoritar', favorite_product_path(product), :method => :patch %></td>
+      <% else %>
+        <td><%= link_to 'Favoritar', favorite_product_path(product), :method => :patch %></td>
+      <% end %>
       <td><%= link_to 'Editar', edit_product_path(product) %></td>
       <td><%= link_to 'Deletar', product_path(product), method: :delete, data: { confirm: 'Você tem certeza?' } %></td>
     </tr>
