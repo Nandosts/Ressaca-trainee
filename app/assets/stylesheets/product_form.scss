@@ -12,7 +12,7 @@ body{
   right: 0;
   margin-left: auto;
   margin-right: auto;
-  background: #191919;
+  background: #2C365E;
   text-align: center;
   z-index: 1;
 }
@@ -28,17 +28,16 @@ body{
   display: block;
   margin: 40px auto 0px;
   text-align: center;
-  border: 2px solid #3498db;
+  border: 2px solid #b57f50;
   padding: 14px 10px;
   width: 200px;
   outline: none;
-  color: white;
+  color: #b57f50;
   border-radius: 24px;
   transition: 0.25s;
 }
 .box input[type = "text"]:focus,.box input[type = "number"]:focus{
   width: 280px;
-  border-color: #2ecc71;
 }
 
 .box input[type = "file"]{
@@ -51,17 +50,18 @@ body{
   display: block;
   margin: 40px auto 0px;
   text-align: center;
-  border: 2px solid #3498db;
+  border: 2px solid #b57f50;
   padding: 14px 10px;
   width: 200px;
   outline: none;
-  color: white;
+  color: #b57f50;
   border-radius: 24px;
   transition: 0.25s;
 }
 .box label:hover{
-  border-color: #2ecc71;
-  background: #2ecc71;
+  border-color: #b57f50;
+  background: #b57f50;
+  color: white;
 }
 
 .box select{
@@ -70,18 +70,17 @@ body{
     display: block;
     margin: 40px auto 0px;
     text-align: center;
-    border: 2px solid #3498db;
+    border: 2px solid #b57f50;
     padding: 14px 10px;
     width: 200px;
     outline: none;
-    color: white;
+    color: #b57f50;
     border-radius: 24px;
     transition: 0.25s;
 }
 .box select:focus{
   width: 280px;
-  border-color: #2ecc71;
-  color: grey;
+  border-color: #b57f50;
 }
 
 
@@ -91,17 +90,17 @@ body{
     display: block;
     margin: 40px auto 0px;
     text-align: center;
-    border: 2px solid #3498db;
+    border: 2px solid #b57f50;
     padding: 14px 10px;
     width: 200px;
     outline: none;
-    color: white;
+    color: #b57f50;
     border-radius: 24px;
     transition: 0.25s;
 }
 .box textarea:focus{
   width: 280px;
-  border-color: #2ecc71;
+  border-color: #b57f50;
 }
 
 .box input[type = "submit"]{
@@ -110,14 +109,15 @@ body{
   display: block;
   margin: 40px auto 0px;
   text-align: center;
-  border: 2px solid #2ecc71;
+  border: 2px solid #b57f50;
   padding: 14px 40px;
   outline: none;
-  color: white;
+  color: #b57f50;
   border-radius: 24px;
-  transition: 0.25s;
   cursor: pointer;
+  transition: 0.25s;
 }
 .box input[type = "submit"]:hover{
-  background: #2ecc71;
+  background: #b57f50;
+  color: white;
 }
