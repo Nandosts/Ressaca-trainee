@@ -3,7 +3,7 @@ class AddressesController < ApplicationController
   def create
     address = Address.new(address_args)
     address.user = current_user
-    address.erased = false
+    address.visible = true
 
     begin
       verify_cep(address.cep)
@@ -31,7 +31,7 @@ class AddressesController < ApplicationController
   def destroy
     @address = Address.find(params[:id])
     begin
-      @address.update!(erased: true)
+      @address.update!(visible: false)
       flash[:notice] = 'Endereço apagado com sucesso!'
       redirect_to perfil_user_path
     rescue => exc

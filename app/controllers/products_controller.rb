@@ -32,6 +32,9 @@ class ProductsController < ApplicationController
             @filtered_products = @filtered_products.where(:drink_type_id => params[:type])
         end
 
+        # Retirando os produtos que não estão visiveis/foram excluidos
+        @filtered_products = @filtered_products.where(visible: true)
+
         # Atualizando Pagy
         @pagy, @records = pagy(@filtered_products)
 
@@ -39,7 +42,7 @@ class ProductsController < ApplicationController
     end
 
     def index
-        @products = Product.all
+        @products = Product.where(visible: true)
     end
 
 
@@ -51,6 +54,7 @@ class ProductsController < ApplicationController
 
     def create
         product = Product.new(products_params)
+        product.visible = true
         begin
             product.save!
             flash[:notice] = "Produto #{product.name} criado com sucesso!"
@@ -86,7 +90,7 @@ class ProductsController < ApplicationController
     def destroy
         product = Product.find(params[:id])
         begin
-            product.destroy!
+            product.update!(visible: false)
             flash[:notice] = "Produto #{product.name} apagado com sucesso!"
         rescue => err
             flash[:notice] = err
