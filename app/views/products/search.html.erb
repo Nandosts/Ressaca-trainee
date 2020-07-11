@@ -17,8 +17,16 @@
                                                     ['Entre 25 e 50 reais','25-50'],
                                                     ['Entre 50 e 100 reais','50-100'],
                                                     ['Mais de 100 reais','100-MAX']]) %>
-        <%= search.select :type, options_for_select((@drink_types.collect { |drink_type| [drink_type.name, drink_type.id] }) << ['Tipo de Bebida', '0'], 0) %><br>
-        </div>
+
+        <%= search.select :type, options_for_select((@drink_types.collect { |drink_type| [drink_type.name, drink_type.id] }) << ['Tipo de Bebida', '0'], 0) %>
+        
+        <%= search.select :order, options_for_select([['Ordenar Por', '0'],
+                                                    ['A-Z','1'],
+                                                    ['Z-A','2'],
+                                                    ['Preço Crescente','3'],
+                                                    ['Preço Decrescente','4'],
+                                                    ['Tipo de Produto','5']]) %>
+      </div>
         
         <%= search.submit 'Pesquisar', class:'pesquisar'%> 
 		<h3><a style="color: red; padding-left: 90%" href="javascript: fechar();">X</a></h3></li>

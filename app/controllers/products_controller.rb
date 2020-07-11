@@ -5,12 +5,36 @@ class ProductsController < ApplicationController
     def search
         @drink_types = DrinkType.all
 
-        # Iniciando com todos os produtos
+        # Pegar todos os produtos sem ordem ou filtro
         @filtered_products = Product.all
 
         # Filtrando por nome na busca se necessário
         if params[:search] != nil
             @filtered_products = Product.search(params[:search])
+        end
+        
+        # Ordenação
+        if params[:order] != '0'
+            # Ordenar A-Z
+            if params[:order] == '1'
+                @filtered_products = @filtered_products.order(name: :asc)
+
+            # Ordenar Z-A
+            elsif params[:order] == '2'
+                @filtered_products = @filtered_products.order(name: :desc)
+
+            # Ordenar por preço crescente
+            elsif params[:order] == '3'
+                @filtered_products = @filtered_products.order(value: :asc)
+
+            # Ordenar por preço decrescente
+            elsif params[:order] == '4'
+                @filtered_products = @filtered_products.order(value: :desc)
+
+            # Ordenar por tipo de produto
+            elsif params[:order] == '5'
+                @filtered_products = @filtered_products.order(:drink_type_id)
+            end
         end
 
         # Filtrando por preço se necessário
