@@ -3,7 +3,6 @@ class PurchaseProductsController < ApplicationController
   before_action :require_login
 
   def create
-
     # Checagem se o usuário é maior de idade
     if check_age(Product.find(params[:id]), calculate_age(current_user.birthday))
 
@@ -77,10 +76,8 @@ class PurchaseProductsController < ApplicationController
     old_quantity = purchase_product.quantity
     begin
       purchase_product.update!(quantity: params[:quantity].to_i)
-      # Removendo o preço da quantidade de produtos anterior
-      change_price_tag(-purchase_product.product.value,old_quantity)
-      # Adicionando o preço da nova quantidade de produtos
-      change_price_tag(purchase_product.product.value, params[:quantity].to_i)
+      # Removendo o preço da quantidade de produtos anterior e adicionando a nova quantidade
+      change_price_tag(purchase_product.product.value,params[:quantity].to_i - old_quantity)
 
       flash[:notice] = 'Carrinho atualizado com sucesso!'
     rescue => err
