@@ -1,55 +1,100 @@
-<% if not @cart.products == [] %>
-
-  <h1>Seu carrinho:</h1>
-  <% @cart.purchase_products.each do |product| %>
-    <div class="media">
-      <%= image_tag product.product.photo%>
-      <div class="media-body">
-
-        <h5 class="mt-0"><%= product.product.name.capitalize %></h5>
-
-        <% if product.product.quantity < product.quantity %>
-          <div style="color: red">
-            Quantidade: <%= product.quantity %>
-          </div>
-        <% else %>
-          <div>
-            Quantidade: <%= product.quantity %>
-          </div>
-        <% end %>
-
-        Disponível: <%= product.product.quantity %><br>
-
-        <%= form_with url: update_path(product.id), local:  true do |update| %>
-          Custo: <%= product.product.value * product.quantity %><br>
-          <div class="field">
-            <%= update.label :quantity, 'Altere a quantidade:' %>
-            <%= update.text_field :quantity, value: product.quantity %>
-          </div>
-
-          <div class="actions">
-            <%= update.submit 'Alterar' %>
-          </div>
-
-        <% end %>
-        <%= link_to 'Remover', buy_path(product.id), method: :delete %>
+<body>
+  <%= stylesheet_link_tag 'cart' %>
+  <div clas="tudo">
+  <% if not @cart.products == [] %>
+    <div class='container boxNot'>
+      <h1>Seu carrinho:</h1>
+        <div class="row col-14">
+          <div class="col-2">Foto</div>
+          <div class="col">Nome</div>
+          <div class="col-2">Quantidade</div>
+          <div class="col-2">Estoque</div>
+          <div class="col-2">Custo</div>
+          <div class="col">Alterar quantidade</div>
+          <div class="col"></div>
         </div>
-      </div>
-  <% end %>
-  <h4>Total: <%= number_to_reais(@cart.price) %></h4>
+      <% @cart.purchase_products.each do |product| %>
+        <tr>
+          <div class="row media">
+            <div class="col-2 foto">
+                <%= image_tag product.product.photo, width: '100px', height: '130px'%>
+            </div>
 
-  <%= form_with url: cart_path, method: 'post' do |form| %>
+            <div class="row media-body">
+            
+            <div class="col">
+              <h5 class="mt-0"><%= product.product.name.capitalize %></h5>
+            </div>
 
-    <div class="field">
-      <%= form.label :address_id, 'Endereços' %>
-      <%= form.collection_select(:address_id, @user_addresses, :id, :address) %>
+            <div class="col">
+
+              <% if product.product.quantity.to_i < product.quantity.to_i %>
+                <div style="color: red">
+                  <%= product.quantity.to_i %>
+                </div>
+              <% else %>
+                <div>
+                  <%= product.quantity.to_i %>
+                </div>
+              <% end %>
+
+            </div>
+
+            <div class="col">
+
+              <%= product.product.quantity.to_i %><br>
+            
+            </div>
+
+
+            <div class="col">
+                R$<%= product.product.value * product.quantity.to_i %><br>
+            </div>
+
+            <%= form_with url: update_path(product.id), local:  true do |update| %>
+
+              <div class="col">
+                  <div class="field">
+                    <%= update.text_field :quantity, value: product.quantity.to_i, class: "alterando" %>
+                  </div>
+
+                  <div class="actions">
+                    <%= update.submit 'Alterar' %>
+                  </div>
+              </div>
+
+            <% end %>
+
+
+            <div class="col">
+              <%= link_to 'Remover', buy_path(product.id), method: :delete %>
+            </div>
+              </div>
+            </div>
+        </tr>
+      <% end %>
+      </tbody>
+      </table>
+      <h4>Total: <%= number_to_reais(@cart.price) %></h4>
+
+      <%= form_with url: cart_path, method: 'post' do |form| %>
+
+        <div class="field">
+          <%= form.label :address_id, 'Endereços' %>
+          <%= form.collection_select(:address_id, @user_addresses, :id, :address) %>
+        </div>
+
+        <div class="actions">
+          <%= form.submit "Finalizar essa compra" %>
+        </div>
+      <% end %>
     </div>
+</div>
 
-    <div class="actions">
-      <%= form.submit "Finalizar essa compra" %>
+  <% else %>
+    <div class='boxYes'>
+    <h3>Seu carrinho está vazio! Veja nossos produtos <%= link_to 'aqui', root_path %></h3>
     </div>
   <% end %>
-
-<% else %>
-  <h3>Seu carrinho está vazio! Veja nossos produtos <%= link_to 'aqui', root_path %></h3>
-<% end %>
+  </div>
+</body>

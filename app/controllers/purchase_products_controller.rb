@@ -42,7 +42,7 @@ class PurchaseProductsController < ApplicationController
   # Aumenta a quantidade de um item no carrinho
   def increase_product_on_cart(purchase_product)
 
-    new_quantity = purchase_product.quantity + params[:quantity].to_f
+    new_quantity = purchase_product.quantity.to_i + params[:quantity].to_f
     begin
       purchase_product.update!(quantity: new_quantity)
       change_price_tag(Product.find(params[:id].to_f).value, params[:quantity].to_f)

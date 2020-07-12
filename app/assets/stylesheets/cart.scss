@@ -1,0 +1,28 @@
+.boxYes{
+  width: 900px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  text-align: center;
+}
+
+.boxNot{
+  padding: 40px;
+  position: relative;
+  background: #2C365E;
+  background-size: 100%;
+  text-align: center;
+  color: white;
+}
+
+.foto{
+  padding-bottom: 20px;
+}
+
+
+.alterando{
+  max-width: 50px;
+  text-align: center;
+}
+
