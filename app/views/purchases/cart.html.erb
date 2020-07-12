@@ -55,7 +55,7 @@
 
               <div class="col">
                   <div class="field">
-                    <%= update.text_field :quantity, value: product.quantity.to_i, class: "alterando" %>
+                    <%= update.number_field :quantity, in: 1..(product.product.quantity), class: "alterando" %>
                   </div>
 
                   <div class="actions">
