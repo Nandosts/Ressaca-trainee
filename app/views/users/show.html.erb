@@ -6,93 +6,93 @@
 
 </head>
 <body>
+<div class="tudo">
 
+  <div class="box">
+    <%= form_with model: current_user, url: :update_perfil_user, method: :patch do |form| %>
 
-<div class="box">
-  <%= form_with model: current_user, url: :update_perfil_user, method: :patch do |form| %>
-
-<div class="personal-image">
-    <label class="label">
-      <%= form.file_field :photo %>
-      <figure class="personal-figure">
-      <%if @current_user.photo.attached? %>
-        <%= image_tag @current_user.photo, :class => "personal-avatar", :atl => "Avatar" %>
-      <% else %>
-        <img class="personal-avatar", alt="Avatar" src="https://elaele.com.br/img/anonimo.png">
-      <% end %>
-      <figcaption class="personal-figcaption">
-        <img src="https://raw.githubusercontent.com/ThiagoLuizNunes/angular-boilerplate/master/src/assets/imgs/camera-white.png">
-        <div class="actions">
-          <%= form.submit "Enviar" %>
-        </div>
-      <% end %>
-        </figcaption>
-      </figure>
-    </label>
-  </div>
-
-  <div style="padding-top: 5px;">
-    <p>
-      <strong>Nome:</strong><br>
-      <%= current_user.name %>
-    </p>
-
-    <p >
-      <strong>E-mail:</strong><br>
-      <%= current_user.email %>
-    </p>
-
-    <p >
-      <strong>Dinheiro:</strong><br>
-      <%= number_to_reais(current_user.money) %><br>
-      <button type="button" id="add-funds-btn" data-toggle="collapse" data-target="#funds-form" >Adicionar Fundos</button>
-      <div id="funds-form" class="collapse"><%= render 'add_money' %></div>
-    </p>
-    <strong>Endereços:</strong><br>
-    <table>
-      <thead>
-        <tr>
-          <th style="padding-left: 70px">CEP</th>
-          <th style="padding-left: 20px;">Endereço</th>
-          <th colspan="2"></th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <% current_user.address.each do |address| %>
-          <% if address.visible == true%>
-            <tr>
-              <td style="padding-left: 70px"><%= address.cep %></td>
-              <td><%= address.address %></td>
-              <td> <%= link_to 'Editar', edit_address_path(address) %> </td>
-              <td> <%= link_to 'Deletar', address_path(address), method: :delete, data: { confirm: 'Você tem certeza?' } %> </td>
-            </tr>
-          <% end %>
+  <div class="personal-image">
+      <label class="label">
+        <%= form.file_field :photo %>
+        <figure class="personal-figure">
+        <%if @current_user.photo.attached? %>
+          <%= image_tag @current_user.photo, :class => "personal-avatar", :atl => "Avatar" %>
+        <% else %>
+          <img class="personal-avatar", alt="Avatar" src="https://elaele.com.br/img/anonimo.png">
         <% end %>
+        <figcaption class="personal-figcaption">
+          <img src="https://raw.githubusercontent.com/ThiagoLuizNunes/angular-boilerplate/master/src/assets/imgs/camera-white.png">
+          <div class="actions">
+            <%= form.submit "Enviar" %>
+          </div>
+        <% end %>
+          </figcaption>
+        </figure>
+      </label>
+    </div>
 
-      </tbody>
-    </table>
-    <%= link_to 'Adicionar Endereço', new_address_path %> <br>
+    <div style="padding-top: 5px;">
+      <p>
+        <strong>Nome:</strong><br>
+        <%= current_user.name %>
+      </p>
+
+      <p >
+        <strong>E-mail:</strong><br>
+        <%= current_user.email %>
+      </p>
+
+      <p >
+        <strong>Dinheiro:</strong><br>
+        <%= number_to_reais(current_user.money) %><br>
+        <button type="button" id="add-funds-btn" data-toggle="collapse" data-target="#funds-form" >Adicionar Fundos</button>
+        <div id="funds-form" class="collapse"><%= render 'add_money' %></div>
+      </p>
+      <strong>Endereços:</strong><br>
+      <table>
+        <thead>
+          <tr>
+            <th style="padding-left: 70px">CEP</th>
+            <th style="padding-left: 20px;">Endereço</th>
+            <th colspan="2"></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% current_user.address.each do |address| %>
+            <% if address.visible == true%>
+              <tr>
+                <td style="padding-left: 70px"><%= address.cep %></td>
+                <td><%= address.address %></td>
+                <td> <%= link_to 'Editar', edit_address_path(address) %> </td>
+                <td> <%= link_to 'Deletar', address_path(address), method: :delete, data: { confirm: 'Você tem certeza?' } %> </td>
+              </tr>
+            <% end %>
+          <% end %>
+
+        </tbody>
+      </table>
+      <%= link_to 'Adicionar Endereço', new_address_path %> <br>
+    </div>
+
+  <div style="padding-top: 40px; display:flex; justify-content: space-between"class="row">
+    <% if current_user.admin %>
+      <%= link_to "Ver Produtos", products_path  %>
+      <br>
+      <%= link_to "Ver Tipos de Bebida", drink_types_path  %>
+    <% else %>
+      <%= link_to "Seu Carrinho", cart_path %>
+      <br>
+      <%= link_to 'Compras já realizadas', purchases_index_path %>
+    <% end %>
   </div>
-
-<div style="padding-top: 40px; display:flex; justify-content: space-between"class="row">
-  <% if current_user.admin %>
-    <%= link_to "Ver Produtos", products_path  %>
-    <br>
-    <%= link_to "Ver Tipos de Bebida", drink_types_path  %>
-  <% else %>
-    <%= link_to "Seu Carrinho", cart_path %>
-    <br>
-    <%= link_to 'Compras já realizadas', purchases_index_path %>
-  <% end %>
-</div>
-</div>
-<style>
-.site-footer{
-  display: none;
-}
-</style>
-
+  </div>
+  <style>
+  .site-footer{
+    display: none;
+  }
+  </style>
+<div class="tudo">
 </body>
 </html>
 

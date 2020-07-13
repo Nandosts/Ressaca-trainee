@@ -6,19 +6,19 @@
 
   </head>
   <body>
+<div class="tudo">
 
-
-<div class="box">
-  <h1>Login</h1>
-<%= form_with url: :login, method: :post do |f| %>
-  <input type="email" placeholder="Email" class="field" <%= f.email_field :email %>
-
-  <input type="password" placeholder="Password" class="field" <%= f.password_field :password %>
-
-  <%= f.submit 'Login' %>
-<% end %>
+  <div class="box">
+    <h1>Login</h1>
+  <%= form_with url: :login, method: :post do |f| %>
+    <input type="email" placeholder="Email" class="field" <%= f.email_field :email %>
+  
+    <input type="password" placeholder="Password" class="field" <%= f.password_field :password %>
+  
+    <%= f.submit 'Login' %>
+  <% end %>
+  </div>
 </div>
-
   </body>
 </html>
 
