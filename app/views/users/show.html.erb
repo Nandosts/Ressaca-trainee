@@ -60,7 +60,7 @@
 
       <tbody>
         <% current_user.address.each do |address| %>
-          <% if address.erased == false%>
+          <% if address.visible == true%>
             <tr>
               <td style="padding-left: 70px"><%= address.cep %></td>
               <td><%= address.address %></td>

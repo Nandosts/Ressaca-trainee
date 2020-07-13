@@ -3,7 +3,7 @@
   <h1>Seu carrinho:</h1>
   <% @cart.purchase_products.each do |product| %>
     <div class="media">
-      <%= image_tag product.product.photo %>
+      <%= image_tag product.product.photo%>
       <div class="media-body">
 
         <h5 class="mt-0"><%= product.product.name.capitalize %></h5>
