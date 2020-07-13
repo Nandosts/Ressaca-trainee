@@ -1,16 +1,63 @@
 <% if not @purchase.products == [] %>
-  <h1>Seu carrinho:</h1>
-  <% @purchase.purchase_products.each do |product| %>
-    <div class="media">
-      <%= image_tag product.product.photo %>
-      <div class="media-body">
-        <h5 class="mt-0"><%= product.product.name.capitalize %></h5>
-        Quantidade: <%= product.quantity %>
-      </div>
-    </div>
-  <% end %>
-  <h4>Total: <%= number_to_reais(@purchase.price) %></h4>
+<body>
+  <%= stylesheet_link_tag 'cart' %>
+  <div clas="tudo">
+    <div class='container boxNot'>
+      <h1>Seu carrinho:</h1>
+        <div class="row categorias">
+          <div class="col">Foto</div>
+          <div class="col">Nome</div>
+          <div class="col">Quantidade</div>
+          <div class="col">Custo</div>
+        </div>
+      <% @purchase.purchase_products.each do |product| %>
+        <tr>
+          <div class="row media">
+            <div class="col-3 foto">
+                <%= image_tag product.product.photo, width: '100px', height: '130px'%>
+            </div>
+
+            <div class="row media-body">
+            
+            <div class="col">
+              <h5 class="mt-0"><%= product.product.name.capitalize %></h5>
+            </div>
+
+            <div class="col">
+
+              <% if product.product.quantity.to_i < product.quantity.to_i %>
+                <div style="color: red">
+                  <%= product.quantity.to_i %>
+                </div>
+              <% else %>
+                <div>
+                  <%= product.quantity.to_i %>
+                </div>
+              <% end %>
+
+            </div>
+
+            <div class="col">
+                R$<%= product.product.value * product.quantity.to_i %><br>
+            </div>
+
+              </div>
+            </div>
+        </tr>
+      <% end %>
+      </tbody>
+      </table>
+      <h4>Total: <%= number_to_reais(@purchase.price) %></h4>
+
+      <%= form_with url: cart_path, method: 'post' do |form| %>
+
   <%= link_to 'Voltar', purchases_index_path %>
+      <% end %>
+    </div>
+</div>
 <% else %>
   <h3>Você ainda não realizou uma compra! Comece agora clicando <%= link_to 'aqui', root_path %></h3>
 <% end %>
+  </div>
+
+</body>
