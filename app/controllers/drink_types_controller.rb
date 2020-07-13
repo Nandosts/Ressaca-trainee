@@ -1,6 +1,7 @@
 class DrinkTypesController < ApplicationController
 
     before_action :authorize_admin, only: [:new, :edit, :update, :destroy, :create]
+    
     def index
         @drink_types = DrinkType.all
     end
@@ -37,10 +38,6 @@ class DrinkTypesController < ApplicationController
             flash[:notice] = err
             redirect_to edit_drink_type_path
         end
-    end
-
-    def show
-        @drink_type = DrinkType.find(params[:id])
     end
 
     def destroy

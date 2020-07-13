@@ -1,6 +1,9 @@
 <%= stylesheet_link_tag 'drink_types' %>
 
-<h1 class="text-center" >Tipos de Bebidas Disponíveis</h1>
+<div class="text-center">
+<h1>Tipos de Bebidas Disponíveis</h1>
+<h5 class="justify-content-left"><%= link_to 'Novo Tipo de Bebida', new_drink_type_path %></h5>
+</div>
 
 <table>
   <thead>
@@ -27,10 +30,4 @@
     </tr>
   <% end %>
   </tbody>
-
-  <tfoot>
-    <tr>
-      <th><%= link_to 'Novo Tipo de Bebida', new_drink_type_path %></th>
-    </tr>
-  </tfoot>
 </table>
