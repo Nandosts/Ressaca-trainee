@@ -10,7 +10,7 @@ class ProductsController < ApplicationController
 
         # Filtrando por nome na busca se necessário
         if params[:search] != nil
-            @filtered_products = Product.search(params[:search])
+            @filtered_products = Product.search(params[:search].downcase)
         end
         
         # Ordenação
