@@ -1,0 +1,14 @@
+<div class="box">
+  <h1>Editar</h1>
+<%= stylesheet_link_tag 'login' %>
+
+<%= form_with model: @user, url: edit_user_path, method: :post, local: true do |user| %>
+  <input type="text" placeholder="Nome" class="field" <%= user.text_field :name, required: true, value: @user.name %>
+
+  <input type="date" placeholder="Data de Nascimento" class="field" <%= user.date_field :birthday, required: true, value: @user.birthday %>
+
+  <input type="email" placeholder="Email" class="field" <%= user.email_field :email, required: true %>
+
+  <%= user.submit "Editar" %>
+<% end %>
+</div>
