@@ -36,6 +36,16 @@
       <div class="container-fluid product-favorite">
         <p><strong>Favorito: </strong><%= human_boolean(@product.favorite) %></p>
       </div>
+
+      <div class="container-fluid">
+         <% if  @product.drink_type.alcoholic == true %>
+          <p>
+            <strong style="color: red;"> ATENÇÃO! </strong><br>
+            Esta bebida não é recomendada para menores de 18 anos. <br> Contém Álcool.
+          </p>
+        <% end %>
+      </div>
+
       <div class="container-fluid">
         <%= link_to 'Editar', edit_product_path(@product), :class => "btn btn-primary" %>
       </div>
