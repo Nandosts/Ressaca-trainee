@@ -10,7 +10,7 @@
 
 <div class="box">
   <h1>Registrar</h1>
-  <%= form_with model: other, url: another do |user| %>
+  <%= form_with model: other, local: true, url: another do |user| %>
     <input type="text" placeholder="Nome" class="field" <%= user.text_field :name, required: true %>
     
     <input type="email" placeholder="Email" class="field" <%= user.email_field :email, required: true %>
