@@ -8,14 +8,17 @@ body{
     font-family: sans-serif;
 }
 .box{
-    width: 370px;
-    padding: 40px;
-    position: absolute;
-    top: 45%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    background: #191919;
-    text-align: center;
+  width: 370px;
+  padding: 40px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  background: #2C365E;
+  text-align: center;
+  z-index: 1;
 }
 .box h1{
   color: white;
@@ -29,17 +32,16 @@ body{
   display: block;
   margin: 40px auto 0px;
   text-align: center;
-  border: 2px solid #3498db;
+  border: 2px solid #b57f50;
   padding: 14px 10px;
   width: 200px;
   outline: none;
-  color: white;
+  color: #b57f50;
   border-radius: 24px;
   transition: 0.25s;
 }
 .box input[type = "text"]:focus{
   width: 280px;
-  border-color: #2ecc71;
 }
 
 .box h5 {
@@ -54,17 +56,16 @@ body{
   display: block;
   margin: 30px auto 0px;
   text-align: center;
-  border: 2px solid #3498db;
+  border: 2px solid #b57f50;
   padding: 14px 10px;
   width: 230px;
   outline: none;
-  color: white;
+  color: #b57f50;
   border-radius: 24px;
   transition: 0.25s;
 }
 .box .checkbox-field:hover{
     width: 260px;
-    border-color: #2ecc71;
   }
 
 .box label{
@@ -77,16 +78,35 @@ body{
   display: block;
   margin: 30px auto 0px;
   text-align: center;
-  border: 2px solid #2ecc71;
+  border: 2px solid #b57f50;
   padding: 14px 40px;
   outline: none;
-  color: white;
+  color: #b57f50;
   border-radius: 24px;
   transition: 0.25s;
   cursor: pointer;
 }
 .box input[type = "submit"]:hover{
-  background: #2ecc71;
+  background: #b57f50;
+  color: white;
+}
+
+.action-button{
+  border:0;
+  background: none;
+  margin: 1px auto 0px;
+  text-align: center;
+  border: 2px solid #b57f50;
+  padding: 5px 6px;
+  outline: none;
+  color: #b57f50;
+  border-radius: 5px;
+  transition: 0.25s;
+  cursor: pointer;
+}
+.action-button:hover{
+  background: #b57f50;
+  color: white;
 }
 
 table, th, td {
@@ -120,3 +140,10 @@ tr {
 }
 
 tr:hover {background-color: #b4babe;}
+
+a {
+  color: #b57f50;
+}
+a:hover{
+  color: #b57f50;
+}

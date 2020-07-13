@@ -1,6 +1,6 @@
 <%= stylesheet_link_tag 'drink_types' %>
 
-<h1>Tipos de Bebidas Disponíveis</h1>
+<h1 class="text-center" >Tipos de Bebidas Disponíveis</h1>
 
 <table>
   <thead>
@@ -17,14 +17,11 @@
       <td><%= drink_type.name %></td>
       <td><%= human_boolean(drink_type.alcoholic) %></td>
       <td>
-        <%= link_to drink_type_path(drink_type) do %>
-          <button class="btn btn-primary"><i class="fa fa-eye"></i></button>
-        <% end %>
         <%= link_to edit_drink_type_path(drink_type) do %>
-          <button class="btn btn-primary"><i class="fa fa-pencil-square-o"></i></button>
+          <button class="action-button"><i class="fa fa-pencil-square-o"></i></button>
         <% end %>
         <%= link_to drink_type_path(drink_type), method: :delete, data: { confirm: 'Você tem certeza?' } do %>
-          <button class="btn btn-primary"><i class="fa fa-trash-o"></i></button>
+          <button class="action-button"><i class="fa fa-trash-o"></i></button>
         <% end %>
       </td>
     </tr>
@@ -32,10 +29,8 @@
   </tbody>
 
   <tfoot>
-        <tr>
-              <th><%= link_to 'Novo Tipo de Bebida', new_drink_type_path %></th>
-        </tr>
-    </tfoot>
+    <tr>
+      <th><%= link_to 'Novo Tipo de Bebida', new_drink_type_path %></th>
+    </tr>
+  </tfoot>
 </table>
-
-<%= link_to 'Novo Tipo de Bebida', new_drink_type_path %>
