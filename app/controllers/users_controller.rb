@@ -6,10 +6,10 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
+    @user = current_user
   end
 
-  def show;  end
+  def show; end
 
   def create
     user = User.new(user_args)
