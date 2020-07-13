@@ -44,7 +44,11 @@
   <div class="produtos-grid">
   <div class="product">
     <div class="imgbox">
-      <%= image_tag product.photo, top: '30px', width: '90%', height: '80%'%>
+      <% if product.photo.attached? %>
+        <%= image_tag product.photo, top: '30px', width: '90%', height: '80%'%>
+      <% else %>
+        <%= image_tag asset_path('image-not-found.png'), top: '30px', width: '90%', height: '80%'%>
+      <% end %>
     </div>
     <div class="specifice">
       <h2><%= product.name.capitalize %></h2>
@@ -69,7 +73,11 @@
   <% @records.each do |product| %>
   <div class="product">
     <div class="imgbox">
-      <%= image_tag product.photo, top: '30px', width: '90%', height: '80%'%>
+      <% if product.photo.attached? %>
+        <%= image_tag product.photo, top: '30px', width: '90%', height: '80%'%>
+      <% else %>
+        <%= image_tag asset_path('image-not-found.png'), top: '30px', width: '90%', height: '80%'%>
+      <% end %>
     </div>
     <div class="specifice">
       <h2><%= product.name.capitalize %></h2>
