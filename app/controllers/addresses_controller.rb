@@ -10,7 +10,7 @@ class AddressesController < ApplicationController
       address.save!
       flash[:notice] = 'Endereço criado com sucesso!'
     rescue => exc
-      flash[:notice] = exc
+      flash[:warning] = exc
     ensure
       redirect_to perfil_user_path
     end
@@ -35,7 +35,7 @@ class AddressesController < ApplicationController
       flash[:notice] = 'Endereço apagado com sucesso!'
       redirect_to perfil_user_path
     rescue => exc
-      flash[:notice] = 'Um erro ocorreu'
+      flash[:warning] = 'Um erro ocorreu'
       puts exc
       redirect_to perfil_user_path
     end
@@ -48,7 +48,7 @@ class AddressesController < ApplicationController
       address.update!(address_args)
       flash[:notice] = 'Endereço editado com sucesso!'
     rescue => exc
-      flash[:notice] = exc
+      flash[:warning] = exc
       puts exc
     ensure
       redirect_to perfil_user_path

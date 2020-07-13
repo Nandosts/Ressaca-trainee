@@ -9,7 +9,7 @@ class UserSessionsController < ApplicationController
         create_cart
       end
     else
-      flash[:notice] = "Credenciais inválidas"
+      flash[:warning] = "Credenciais inválidas"
       render 'new'
     end
   end

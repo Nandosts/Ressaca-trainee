@@ -52,9 +52,10 @@ class UsersController < ApplicationController
     begin
       new_money = @user.money.to_f + params[:money].to_f
       @user.update_attributes!(money: new_money)
+      flash[:notice] = "Fundos adicionados com sucesso!"
       redirect_to perfil_user_path
     rescue => err
-      flash[:notice] = err
+      flash[:warning] = err
     end
 
   end
