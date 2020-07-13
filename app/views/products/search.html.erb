@@ -2,46 +2,64 @@
 <html lang="en">
 
 <%= stylesheet_link_tag 'card' %>
-
+<%= stylesheet_link_tag 'search' %>
+<%= javascript_include_tag 'search'%>
+<%= javascript_include_tag 'carousel' %>
 
   <body>
-    <h1>Nossos Produtos</h1>
-    <%= form_with url: search_url, method: 'get', local: true do |search| %>
-      <div class="field">
-        <%= search.label :search, 'Nome do produto' %>
-        <%= search.text_field :search %>
-      </div>
-
-      <div class="field">
-        <%= search.label :type, 'Filtros:' %>
+  <div id="popup" class="popup modal">
+  	<div class="textoPopup">
+  		<%= form_with url: search_url, method: 'get', local: true do |search| %>
+        <%= search.text_field :search, class: 'box' %><br>
+        <div class="select">
         <%= search.select :price, options_for_select([['Faixa de preço', '0'],
                                                     ['Menos de 25 reais','0-25'],
                                                     ['Entre 25 e 50 reais','25-50'],
                                                     ['Entre 50 e 100 reais','50-100'],
                                                     ['Mais de 100 reais','100-MAX']]) %>
-        <%= search.select :type, options_for_select((@drink_types.collect { |drink_type| [drink_type.name, drink_type.id] }) << ['Tipo de Bebida', '0'], 0) %>
-      </div>
 
-      <div class="actions">
-        <%= search.submit 'Pesquisar' %>
+        <%= search.select :type, options_for_select((@drink_types.collect { |drink_type| [drink_type.name, drink_type.id] }) << ['Tipo de Bebida', '0'], 0) %>
+        
+        <%= search.select :order, options_for_select([['Ordenar Por', '0'],
+                                                    ['A-Z','1'],
+                                                    ['Z-A','2'],
+                                                    ['Preço Crescente','3'],
+                                                    ['Preço Decrescente','4'],
+                                                    ['Tipo de Produto','5']]) %>
       </div>
+        
+        <%= search.submit 'Pesquisar', class:'pesquisar'%> 
+		<h3><a style="color: red; padding-left: 90%" href="javascript: fechar();">X</a></h3></li>
     <% end %>
+
+  	</div>
+  </div>
     
-<!--
 <h2 style="display: flex; justify-content:center; color: red; padding: 4% 0%;">Principais Produtos</h2>
 
 <div class="owl-carousel owl-theme">
-    <% @records.each do |product| %>
+    <% @records.where(favorite: 'yes').each do |product| %>
 
-    <div class="item"><%= image_tag product.photo, width: '300px', height: '400px'%>
-      <h4 class="card-title" style="display: flex; justify-content: center;"><%= product.name.capitalize %></h4>
-      <h5 style="display: flex; justify-content: center;">R$ <%= product.value %></h5>
-      <div style="display: flex; justify-content: center;"><a href="<%= product_path(product.id) %>" class="btn btn-success" >Saiba mais</a></div>
+  <section id="produtos" class="produtos-section">
+  <div class="produtos-grid">
+  <div class="product">
+    <div class="imgbox">
+      <%= image_tag product.photo, top: '30px', width: '90%', height: '80%'%>
     </div>
-    <% end %>
+    <div class="specifice">
+      <h2><%= product.name.capitalize %></h2>
+      <div class="price"><%= number_to_reais(product.value) %></div>
+      <a href="<%= product_path(product.id) %>">Saiba mais</a>
+    </div>
+</div>
+
+    
+  </div>
+</section>
+  <% end %>
 
 </div>
--->
+
 
 
 <!-- START PROJECTS SECTION -->
@@ -71,26 +89,5 @@
     <%== pagy_bootstrap_nav(@pagy) %>
   </div>
   </body>
-
-  <script>
-    $( document ).on('turbolinks:load',function(){
-      $('.owl-carousel').owlCarousel({
-          loop:true,
-          margin:10,
-          nav:true,
-          responsive:{
-              0:{
-                  items:1
-              },
-              600:{
-                  items:2
-              },
-              1000:{
-                  items:4
-              }
-          }
-      })
-    });
-  </script>
-
 </html>
+

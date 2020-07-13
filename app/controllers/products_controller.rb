@@ -5,12 +5,36 @@ class ProductsController < ApplicationController
     def search
         @drink_types = DrinkType.all
 
-        # Iniciando com todos os produtos
+        # Pegar todos os produtos sem ordem ou filtro
         @filtered_products = Product.all
 
         # Filtrando por nome na busca se necessário
         if params[:search] != nil
             @filtered_products = Product.search(params[:search])
+        end
+        
+        # Ordenação
+        if params[:order] != '0'
+            # Ordenar A-Z
+            if params[:order] == '1'
+                @filtered_products = @filtered_products.order(name: :asc)
+
+            # Ordenar Z-A
+            elsif params[:order] == '2'
+                @filtered_products = @filtered_products.order(name: :desc)
+
+            # Ordenar por preço crescente
+            elsif params[:order] == '3'
+                @filtered_products = @filtered_products.order(value: :asc)
+
+            # Ordenar por preço decrescente
+            elsif params[:order] == '4'
+                @filtered_products = @filtered_products.order(value: :desc)
+
+            # Ordenar por tipo de produto
+            elsif params[:order] == '5'
+                @filtered_products = @filtered_products.order(:drink_type_id)
+            end
         end
 
         # Filtrando por preço se necessário
@@ -32,6 +56,9 @@ class ProductsController < ApplicationController
             @filtered_products = @filtered_products.where(:drink_type_id => params[:type])
         end
 
+        # Retirando os produtos que não estão visiveis/foram excluidos
+        @filtered_products = @filtered_products.where(visible: true)
+
         # Atualizando Pagy
         @pagy, @records = pagy(@filtered_products)
 
@@ -39,17 +66,19 @@ class ProductsController < ApplicationController
     end
 
     def index
-        @products = Product.all
+        @products = Product.where(visible: true)
     end
 
 
     def new
         @product = Product.new
         @drink_types = DrinkType.all
+        @page_title = "Cadastrar Produto"
     end
 
     def create
         product = Product.new(products_params)
+        product.visible = true
         begin
             product.save!
             flash[:notice] = "Produto #{product.name} criado com sucesso!"
@@ -63,6 +92,7 @@ class ProductsController < ApplicationController
     def edit
         @product = Product.find(params[:id])
         @drink_types = DrinkType.all
+        @page_title = "Editar Produto"
     end
 
     def update
@@ -84,7 +114,7 @@ class ProductsController < ApplicationController
     def destroy
         product = Product.find(params[:id])
         begin
-            product.destroy!
+            product.update!(visible: false)
             flash[:notice] = "Produto #{product.name} apagado com sucesso!"
         rescue => err
             flash[:notice] = err
@@ -107,7 +137,9 @@ class ProductsController < ApplicationController
     private
 
     def products_params
-        params['product'][:name] = params['product'][:name].downcase
+        unless params['product'][:name].nil?
+            params['product'][:name] = params['product'][:name].downcase
+        end
         return params.require('product').permit(:name, :value, :volume, :quantity, :favorite, :drink_type_id, :description, :photo)
     end
 

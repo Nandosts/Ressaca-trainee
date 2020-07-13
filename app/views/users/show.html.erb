@@ -32,22 +32,23 @@
   </div>
 
   <div style="padding-top: 5px;">
-    <p >
-      <strong style="color: lightgreen">Nome:</strong><br>
+    <p>
+      <strong>Nome:</strong><br>
       <%= current_user.name %>
     </p>
 
     <p >
-      <strong style="color: lightgreen">E-mail:</strong><br>
+      <strong>E-mail:</strong><br>
       <%= current_user.email %>
     </p>
 
     <p >
-      <strong style="color: lightgreen">Dinheiro:</strong><br>
-      R$<%= current_user.money %><br>
-      <%= link_to 'Adicionar Fundos', money_path %>
+      <strong>Dinheiro:</strong><br>
+      <%= number_to_reais(current_user.money) %><br>
+      <button type="button" id="add-funds-btn" data-toggle="collapse" data-target="#funds-form" >Adicionar Fundos</button>
+      <div id="funds-form" class="collapse"><%= render 'add_money' %></div>
     </p>
-    <strong style="color: lightgreen">Endereços:</strong><br>
+    <strong>Endereços:</strong><br>
     <table>
       <thead>
         <tr>
@@ -59,7 +60,7 @@
 
       <tbody>
         <% current_user.address.each do |address| %>
-          <% if address.erased == false%>
+          <% if address.visible == true%>
             <tr>
               <td style="padding-left: 70px"><%= address.cep %></td>
               <td><%= address.address %></td>
@@ -85,7 +86,7 @@
     <%= link_to 'Compras já realizadas', purchases_index_path %>
   <% end %>
 </div>
-
+</div>
 <style>
 .site-footer{
   display: none;

@@ -1,23 +1,43 @@
-<h1>Compras Antigas</h1>
-<table>
-  <thead>
-  <tr>
-    <th>Quantidade de produtos</th>
-    <th>Preço</th>
-    <th>Endereço de envio</th>
-    <th>Comprado em</th>
-    <th colspan="4"></th>
-  </tr>
-  </thead>
-  <tbody>
-  <% @purchases.each do |purchase| %>
-    <tr>
-      <td><%= purchase.products.length %></td>
-      <td><%= purchase.price %></td>
-      <td><%= Address.find(purchase.address_id).address %></td>
-      <td><%= purchase.updated_at %></td>
-      <td><%= link_to 'Detalhes', purchase_show_path(purchase.id) %></td>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
+<body>
+  <%= stylesheet_link_tag 'cart' %>
+  <div clas="tudo">
+    <div class='container boxNot'>
+      <h1 style="padding-bottom: 50px;">Compras Antigas:</h1>
+        <div class="row categorias">
+          <div class="col">Quantidade de produtos</div>
+          <div class="col">Preço</div>
+          <div class="col-4">Endereço de envio</div>
+          <div class="col">Comprado em</div>
+          <div class="col"></div>
+        </div>
+      <% @purchases.each do |purchase| %>
+          <div class="row col-14">
+            <div class="col">
+              <%= purchase.products.length %>
+            </div>
+            <div class="col">
+              R$<%= purchase.price.round(2) %>
+            </div>
+
+            <div class="col-4">
+              <%= Address.find(purchase.address_id).address %>
+            </div>
+
+            <div class="col">
+              <%= purchase.updated_at %>
+            </div>
+            <div class="col details">
+              <%= link_to 'Detalhes', purchase_show_path(purchase.id) %>
+            </div>
+          </div>
+      <% end %>
+    </div>
+</div>
+</body>
+
+<style>
+.boxNot{
+  margin-top: 5%;
+  background-color: darkslategray;
+}
+</style>

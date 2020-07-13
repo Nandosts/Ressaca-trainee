@@ -9,7 +9,7 @@ body{
   top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);
-  background: #191919;
+  background: #2C365E;
   text-align: center;
 }
 .box h1{
@@ -18,9 +18,21 @@ body{
   font-weight: 500;
 }
 
-p, th, tr, strong, h5 {
+p, th, tr, strong {
     color: white;
     font-weight: 400;
+}
+
+a {
+  color: #b57f50;
+}
+
+a:hover {
+  color: #b57f50;
+}
+
+strong {
+  color: #b57f50;
 }
 
 td {
@@ -71,4 +83,76 @@ td {
   margin-top: 40%;
   width: 50px;
   height: 50px;
+}
+
+div #add-funds-btn{
+  margin-top: 3px;
+  border:0;
+  outline: none;
+  background: none;
+  text-align: center;
+  border: 2px solid #670000;
+  padding: 4px 8px;
+  color: #b57f50;
+  border-radius: 24px;
+  transition: 0.25s;
+  cursor: pointer;
+}
+div #add-funds-btn:hover{
+  background: #670000;
+  color: white;
+}
+
+div input[type = "submit"]{
+  border:0;
+  background: none;
+  text-align: center;
+  border: 2px solid #670000;
+  padding: 4px 8px;
+  margin-top: 2px;
+  outline: none;
+  color: #b57f50;
+  border-radius: 24px;
+  transition: 0.25s;
+  cursor: pointer;
+}
+div input[type = "submit"]:hover{
+  background: #670000;
+  color: white;
+}
+
+div input[type = "number"]{
+  border:0;
+  background: none;
+  text-align: center;
+  border: 2px solid #670000;
+  padding: 4px 8px;
+  width: 150px;
+  outline: none;
+  color: #b57f50;
+  border-radius: 24px;
+  transition: 0.25s;
+}
+div input[type = "number"]:focus{
+  width: 200px;
+}
+
+.personal-figure {
+  input[type = "submit"] {
+    border: 0;
+    background: none;
+    text-align: center;
+    border: 2px solid #fff;
+    padding: 4px 8px;
+    margin-top: 2px;
+    outline: none;
+    color: #fff;
+    border-radius: 24px;
+    transition: 0.25s;
+    cursor: pointer;
+  }
+
+  input[type = "submit"]:hover{
+    background: rgba(0,0,0,0);
+  }
 }
