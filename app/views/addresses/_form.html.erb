@@ -1,14 +1,15 @@
 <%= javascript_include_tag 'Mask' %>
+<%=stylesheet_link_tag 'addresses' %>
 
 <%= form_with model: @address, local: true do |form| %>
     <div class="field">
-      <%= form.label :cep, 'CEP' %>
+      <%= form.label :cep, 'CEP' %><br>
       <%= form.text_field :cep, class: 'cep', required: true %>
     </div>
 
     <div class="field">
       <%= form.label :address, 'Endereço' %>
-      <%= form.text_field :address, required: true %>
+      <%= form.text_field :address, class: 'address', required: true %>
     </div>
 
     <div class="actions">

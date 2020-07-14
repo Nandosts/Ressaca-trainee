@@ -27,3 +27,5 @@ Rails.application.config.assets.precompile += %w( search.js )
 Rails.application.config.assets.precompile += %w( product_form.scss )
 Rails.application.config.assets.precompile += %w( custom.scss )
 Rails.application.config.assets.precompile += %w( cart.scss )
+Rails.application.config.assets.precompile += %w( addresses.scss )
+
