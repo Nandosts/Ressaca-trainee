@@ -112,7 +112,9 @@ body{
 table, th, td {
     border: 1px solid black;
 }
-
+table th, table td{
+  text-align: center;
+}
 table {
     border-radius: 24px;
     margin-left:auto;

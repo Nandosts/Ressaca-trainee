@@ -1,38 +1,60 @@
+<%= stylesheet_link_tag 'drink_types' %>
+
+
+<div class="text-center">
 <h1>Produtos Disponíveis</h1>
+<h5 class="justify-content-left"><%= link_to 'Novo Produto', new_product_path %></h5>
+</div>
 
 <table>
   <thead>
   <tr>
-    <th>Nome</th>
-    <th>Valor</th>
-    <th>Volume (mL)</th>
-    <th>Tipo</th>
-    <th>Quantidade</th>
-    <th>Favorito</th>
-    <th colspan="9"></th>
+    <th scope="col">Nome</th>
+    <th scope="col">Valor</th>
+    <th scope="col">Volume (mL)</th>
+    <th scope="col">Tipo</th>
+    <th scope="col">Quantidade</th>
+    <th scope="col">Favorito</th>
+    <th scope="col" colspan="9"> Ações</th>
   </tr>
   </thead>
 
   <tbody>
   <% @products.each do |product| %>
     <tr>
-      <td><%= product.name %></td>
+      <td><%= product.name.capitalize %></td>
       <td><%= number_to_reais(product.value) %></td>
       <td><%= product.volume %></td>
       <td><%= product.drink_type.name %></td>
       <td><%= product.quantity %></td>
       <td><%= human_boolean(product.favorite) %></td>
-      <td><%= link_to 'Detalhes', product_path(product) %></td>
-      <% if product.favorite %>
-        <td><%= link_to 'Desfavoritar', favorite_product_path(product), :method => :patch %></td>
+      <td>
+        <%= link_to product_path(product) do %>
+          <i class="action-button fa fa-file-text"></i>
+        <% end %>
+        <% if product.favorite %>
+          <%= link_to favorite_product_path(product), :method => :patch do %>
+            <i class="action-button fa fa-heart" style="color: red"></i>
+          <% end %>
       <% else %>
-        <td><%= link_to 'Favoritar', favorite_product_path(product), :method => :patch %></td>
+          <%= link_to favorite_product_path(product), :method => :patch do %>
+            <i class="action-button fa fa-heart-o" style="color: red"></i>
+          <% end %>
       <% end %>
-      <td><%= link_to 'Editar', edit_product_path(product) %></td>
-      <td><%= link_to 'Deletar', product_path(product), method: :delete, data: { confirm: 'Você tem certeza?' } %></td>
+      <%= link_to edit_product_path(product) do %>
+      <i class="action-button fa fa-pencil-square-o"></i>
+      <% end %>
+        <%= link_to product_path(product), method: :delete, data: { confirm: 'Você tem certeza?' } do%>
+          <i class="action-button fa fa-trash"></i>
+        <% end %>
+      </td>
     </tr>
   <% end %>
   </tbody>
 </table>
 
-<%= link_to 'Novo Produto', new_product_path %>
+<style>
+  .fa-heart:hover, .fa-heart-o:hover{
+    background-color: white;
+  }
+</style>
