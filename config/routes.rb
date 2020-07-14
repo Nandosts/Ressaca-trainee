@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root 'products#search'
-  resources :addresses, :drink_types
+  resources :addresses
+  resources :drink_types, except: [:show]
 
   scope 'compras' do
     get 'compra(.:id)', to: 'purchases#show', as: :purchase_show
