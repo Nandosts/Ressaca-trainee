@@ -51,25 +51,28 @@
       <strong>Endereços:</strong><br>
       <table>
         <thead>
-          <tr>
-            <th style="padding-left: 70px">CEP</th>
-            <th style="padding-left: 20px;">Endereço</th>
-            <th colspan="2"></th>
-          </tr>
+          <div class="row col">
+            <div class="col-3">CEP</div>
+            <div class="col-5">Endereço</div>
+            <div class="col-2"></div>
+            <div class="col-2"></div>
+          </div>
         </thead>
 
         <tbody>
           <% current_user.address.each do |address| %>
             <% if address.visible == true%>
-              <tr>
-                <td style="padding-left: 70px"><%= address.cep %></td>
-                <td><%= address.address %></td>
-                <td> <%= link_to 'Editar', edit_address_path(address) %> </td>
-                <td> <%= link_to 'Deletar', address_path(address), method: :delete, data: { confirm: 'Você tem certeza?' } %> </td>
-              </tr>
+              <div class= "row col">
+                <div class="col-3"><%= address.cep %></div>
+                <div class="col-5"><%= address.address %></div>
+                <div class="col-2"> <%= link_to 'Editar', edit_address_path(address) %> </div>
+                <div class="col-2"> <%= link_to 'Deletar', address_path(address), method: :delete, data: { confirm: 'Você tem certeza?' } %> </div>
+              </div>
             <% end %>
           <% end %>
-
+        </tbody>
+      </table>
+    <%= link_to 'Adicionar Endereço', new_address_path %> <br>
   <div style="padding-top: 40px; display:flex; justify-content: space-between"class="row">
     <% if current_user.admin %>
       <%= link_to "Ver Produtos", products_path  %>
