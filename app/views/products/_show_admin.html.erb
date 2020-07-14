@@ -11,9 +11,9 @@
   <div class="row justify-content-center">
     <div class="col-md-4">
       <% if @product.photo.attached? %>
-        <div>
-          <%= image_tag @product.photo, :class => 'product-image img-fluid' %>
-        </div>
+        <%= image_tag @product.photo, :class => 'product-image img-fluid' %>
+      <% else %>
+        <%= image_tag asset_path('image-not-found.png'), :class => 'product-image img-fluid' %>
       <% end %>
     </div>
 
