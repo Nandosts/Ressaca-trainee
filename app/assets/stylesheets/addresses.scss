@@ -1,3 +1,30 @@
-// Place all the styles related to the Addresses controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
+body{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background: #DCE0D9;
+  }
+.box{
+  margin-top: 6%;
+  width: 370px;
+  padding: 40px;
+  position: relative;
+  background: #2C365E;
+  text-align: center;
+  justify-content: center;
+  color: white;
+}
+
+.tudo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+.cep, .address{
+    text-align: center;
+}
+
+.field{
+    padding-bottom: 20px;
+}
