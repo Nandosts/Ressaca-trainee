@@ -16,7 +16,7 @@ class DrinkTypesController < ApplicationController
             flash[:notice] = "Tipo de bebida #{drink_type.name} criado com sucesso!"
             redirect_to drink_type_path(drink_type)
         rescue => err
-            flash[:notice] = err
+            flash[:warning] = err
             redirect_to new_drink_type_path
         end
     end
@@ -32,7 +32,7 @@ class DrinkTypesController < ApplicationController
             flash[:notice] = "Tipo de bebida #{drink_type.name} modificado com sucesso!"
             redirect_to drink_type_path(drink_type)
         rescue => err
-            flash[:notice] = err
+            flash[:warning] = err
             redirect_to edit_drink_type_path
         end
     end
@@ -47,7 +47,7 @@ class DrinkTypesController < ApplicationController
             drink_type.destroy!
             flash[:notice] = "Tipo de bebida #{drink_type.name} apagado com sucesso!"
         rescue => err
-            flash[:notice] = err
+            flash[warning] = err
         ensure
             redirect_to drink_types_path
         end

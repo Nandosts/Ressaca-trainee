@@ -18,3 +18,7 @@
 //= require bootstrap
 //= require owl.carousel
 //= require jquery.mask
+
+function ShowPopup(){
+    $('#Pop-up').modal('show');
+}
