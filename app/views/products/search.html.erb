@@ -12,7 +12,7 @@
 <h2 style="display: flex; justify-content:center; color: red; padding: 4% 0%;">Principais Produtos</h2>
 
 <div class="owl-carousel owl-theme">
-    <% @records.where(favorite: 'yes').each do |product| %>
+    <% @faves.each do |product| %>
 
   <section id="produtos" class="produtos-section">
   <div class="produtos-grid">
