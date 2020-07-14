@@ -13,7 +13,7 @@
     align-items: center;
     background: rgba(0, 0, 0, 0.4);
   }
-  .box, .pesquisar{
+  .search-box, .pesquisar{
     border:0;
     background: white;
     display: block;
@@ -46,7 +46,7 @@
     color: black;
   }
 
-  .select{
+  .search-select{
     padding-left: 60px;
     padding-right: 60px;
     display: flex;

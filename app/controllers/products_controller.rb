@@ -10,7 +10,7 @@ class ProductsController < ApplicationController
 
         # Filtrando por nome na busca se necessário
         if params[:search] != nil
-            @filtered_products = Product.search(params[:search])
+            @filtered_products = Product.search(params[:search].downcase)
         end
         
         # Ordenação
@@ -84,7 +84,7 @@ class ProductsController < ApplicationController
             flash[:notice] = "Produto #{product.name} criado com sucesso!"
             redirect_to product_path(product)
         rescue => err
-            flash[:notice] = err
+            flash[:warning] = err
             redirect_to new_product_path
         end
     end
@@ -102,7 +102,7 @@ class ProductsController < ApplicationController
             flash[:notice] = "Produto #{product.name} modificado com sucesso!"
             redirect_to product_path(product)
         rescue => err
-            flash[:notice] = err
+            flash[:warning] = err
             redirect_to edit_product_path
         end
     end
@@ -117,7 +117,7 @@ class ProductsController < ApplicationController
             product.update!(visible: false)
             flash[:notice] = "Produto #{product.name} apagado com sucesso!"
         rescue => err
-            flash[:notice] = err
+            flash[:warning] = err
         ensure
             redirect_to products_path
         end
@@ -128,7 +128,7 @@ class ProductsController < ApplicationController
         begin
             product.update_attributes!(favorite: !product.favorite)
         rescue => err
-            flash[:notice] = err
+            flash[:warning] = err
         ensure
             redirect_to products_path
         end

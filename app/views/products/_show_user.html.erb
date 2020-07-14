@@ -11,9 +11,9 @@
   <div class="row justify-content-center">
     <div class="col-md-4">
       <% if @product.photo.attached? %>
-        <div>
-          <%= image_tag @product.photo, :class => 'product-image img-fluid' %>
-        </div>
+        <%= image_tag @product.photo, :class => 'product-image img-fluid' %>
+      <% else %>
+        <%= image_tag asset_path('image-not-found.png'), :class => 'product-image img-fluid' %>
       <% end %>
     </div>
 
@@ -30,6 +30,15 @@
       <div class="container-fluid pb-0 product-stock">
         <%= stock_information(@product.quantity) %>
       </div>
+      <div class="container-fluid">
+         <% if  @product.drink_type.alcoholic == true %>
+          <p>
+            <strong style="color: red;"> ATENÇÃO! </strong><br>
+            Esta bebida não é recomendada para menores de 18 anos. <br> Contém Álcool.
+          </p>
+        <% end %>
+      </div>
+      <br>
       <div class="container-fluid product-purchase">
         <%= form_with url: buy_path(@product.id), local: true do |buy| %>
           <div class="field">

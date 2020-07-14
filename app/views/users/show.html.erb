@@ -70,11 +70,6 @@
             <% end %>
           <% end %>
 
-        </tbody>
-      </table>
-      <%= link_to 'Adicionar Endereço', new_address_path %> <br>
-    </div>
-
   <div style="padding-top: 40px; display:flex; justify-content: space-between"class="row">
     <% if current_user.admin %>
       <%= link_to "Ver Produtos", products_path  %>
@@ -84,6 +79,8 @@
       <%= link_to "Seu Carrinho", cart_path %>
       <br>
       <%= link_to 'Compras já realizadas', purchases_index_path %>
+        <br>
+      <%= link_to 'Editar Usuário', edit_user_path %>
     <% end %>
   </div>
   </div>
@@ -92,7 +89,7 @@
     display: none;
   }
   </style>
-<div class="tudo">
+</div>
 </body>
 </html>
 

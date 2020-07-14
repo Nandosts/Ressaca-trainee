@@ -34,7 +34,7 @@ class PurchaseProductsController < ApplicationController
       redirect_to cart_path
     rescue => err
       print err
-      flash[:notice] = 'Algo deu errado!'
+      flash[:warning] = 'Algo deu errado!'
       redirect_to product_path(params[:id])
     end
   end
@@ -50,7 +50,7 @@ class PurchaseProductsController < ApplicationController
       redirect_to cart_path
     rescue => err
       print err
-      flash[:notice] = 'Algo deu errado!'
+      flash[:warning] = 'Algo deu errado!'
       redirect_to product_path(params[:id])
     end
   end
@@ -63,7 +63,7 @@ class PurchaseProductsController < ApplicationController
       flash[:notice] = 'Produto retirado do carrinho com sucesso!'
       redirect_to cart_path
     rescue => err
-      flash[:notice] = 'Algo deu errado!'
+      flash[:warning] = 'Algo deu errado!'
       print err
       redirect_to cart_path
     end
@@ -81,7 +81,7 @@ class PurchaseProductsController < ApplicationController
 
       flash[:notice] = 'Carrinho atualizado com sucesso!'
     rescue => err
-      flash[:notice] = 'Algo deu errado!'
+      flash[:warning] = 'Algo deu errado!'
       print err
     ensure
       redirect_to cart_path
@@ -103,7 +103,7 @@ class PurchaseProductsController < ApplicationController
   # Retorna false se a idade for menor de 18 e o produto for alcoolico
   def check_age (product, age)
     if age < 18 and product.drink_type.alcoholic
-      flash[:notice] = 'Você não é maior do idade!'
+      flash[:warning] = 'Você não é maior do idade!'
       return false
     else
       return true

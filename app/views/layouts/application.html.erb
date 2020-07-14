@@ -7,6 +7,8 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag 'navbar'%>
     <%= stylesheet_link_tag 'footer'%>
+    <%= stylesheet_link_tag 'search' %>
+    <%= javascript_include_tag 'search'%>
 
     <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
@@ -17,6 +19,34 @@
   
 
 <body>
+
+<div id="popup" class="popup modal">
+  <div class="textoPopup">
+    <%= form_with url: search_url, method: 'get', local: true do |search| %>
+      <%= search.text_field :search, class: 'search-box' %><br>
+      <div class="search-select">
+        <%= search.select :price, options_for_select([['Faixa de preço', '0'],
+                                                    ['Menos de 25 reais','0-25'],
+                                                    ['Entre 25 e 50 reais','25-50'],
+                                                    ['Entre 50 e 100 reais','50-100'],
+                                                    ['Mais de 100 reais','100-MAX']]) %>
+
+        <%= search.select :type, options_for_select((@drink_types_search.collect { |drink_type| [drink_type.name, drink_type.id] }) << ['Tipo de Bebida', '0'], 0) %>
+        
+        <%= search.select :order, options_for_select([['Ordenar Por', '0'],
+                                                    ['A-Z','1'],
+                                                    ['Z-A','2'],
+                                                    ['Preço Crescente','3'],
+                                                    ['Preço Decrescente','4'],
+                                                    ['Tipo de Produto','5']]) %>
+      </div>
+      
+      <%= search.submit 'Pesquisar', class:'pesquisar'%> 
+      <h3><a style="color: red; padding-left: 90%" href="javascript: fechar();">X</a></h3></li>
+    <% end %>
+  </div>
+</div>
+
 <div class="geral">
   <div class="nav">
     <div class="logo">
@@ -36,7 +66,44 @@
     </ul>
     </div>
 
-    <h3 style="color: red"><%= flash[:notice] %></h3>
+
+    <!-- Pop-up -->
+    <div class="modal fade" id="Pop-up" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <% flash.each do |type, msg| %>
+              <% if type == 'notice' %>
+                <div style="color: green">
+                  <%= msg %>
+                </div>
+              <% elsif type == 'warning'%>
+                <div style="color: red">
+                  <%= msg %>
+                </div>
+              <% end %>
+
+            <% end %>
+
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+     <!--Renderiza o pop-up quando chega um notice-->
+    <% flash.each do |type, msg| %>
+      <%= javascript_tag "ShowPopup()" %>
+    <% end %>
+
     <%= yield %>
     </div>
 

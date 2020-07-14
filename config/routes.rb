@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root 'products#search'
-  resources :addresses, :drink_types
+  resources :addresses
+  resources :drink_types, except: [:show]
 
   scope 'compras' do
     get 'compra(.:id)', to: 'purchases#show', as: :purchase_show
@@ -32,6 +33,9 @@ Rails.application.routes.draw do
     get 'money', to: 'users#add_money', as: :money
     post 'money', to: 'users#add_money_logic'
     patch 'perfil(.:id)', to: 'users#update', as: :update_perfil_user
+
+    get 'editar', to: 'users#edit', as: :edit_user
+    post 'editar', to: 'users#update'
   end
 
   resources :products do

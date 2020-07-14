@@ -26,7 +26,7 @@ class PurchasesController < ApplicationController
     rescue => err
       print err
       change_stock(cart, false)
-      flash[:notice] = 'Algo deu errado!'
+      flash[:warning] = 'Algo deu errado!'
       redirect_to cart_path
     end
   end
@@ -40,7 +40,7 @@ class PurchasesController < ApplicationController
     cart = current_user.purchases.find_by(bought: false)
     money = current_user.money
     if money < cart.price
-      flash[:notice] = 'Você não tem dinheiro suficiente para realizar essa compra.'
+      flash[:warning] = 'Você não tem dinheiro suficiente para realizar essa compra.'
       redirect_to perfil_user_path
     end
   end
@@ -63,7 +63,7 @@ class PurchasesController < ApplicationController
       available = associative.product.quantity
       requested = associative.quantity
       if requested > available
-        flash[:notice] << "Não pussimos #{associative.product.name} o suficiente para atender seu pedido \n"
+        flash[:warning] << "Não pussuimos #{associative.product.name} o suficiente para atender seu pedido \n"
         control = true
       end
     end
@@ -99,7 +99,7 @@ class PurchasesController < ApplicationController
   # Método para verificar se o usuário tem um endereço cadastrado antes de efetuar uma compra.
   def check_address_exist
     if Address.find_by(user_id: current_user.id, visible: true) == nil
-      flash[:notice] = "Cadastre um endereço antes de concluir a compra!"
+      flash[:warning] = "Cadastre um endereço antes de concluir a compra!"
       redirect_to perfil_user_path
     end
   end
