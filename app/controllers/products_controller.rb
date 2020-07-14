@@ -8,6 +8,9 @@ class ProductsController < ApplicationController
         # Pegar todos os produtos sem ordem ou filtro
         @filtered_products = Product.all
 
+        # Pegar os favoritos
+        @faves = Product.where('favorite = true')
+
         # Filtrando por nome na busca se necessário
         if params[:search] != nil
             @filtered_products = Product.search(params[:search].downcase)
