@@ -5,12 +5,10 @@ body{
     background: #DCE0D9;
   }
 .box{
+  margin-top: 6%;
   width: 370px;
   padding: 40px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%,-50%);
+  position: relative;
   background: #2C365E;
   text-align: center;
 }
@@ -18,6 +16,12 @@ body{
   color: white;
   text-transform: uppercase;
   font-weight: 500;
+}
+
+.tudo{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .box input[type = "email"],.box input[type = "password"]{
