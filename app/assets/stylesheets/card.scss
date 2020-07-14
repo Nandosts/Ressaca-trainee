@@ -83,6 +83,15 @@ body{
     font-size: 20px;
     width: 100%;
     color: white;
+    
+}
+
+
+.specifice h2:before {
+  content: '';
+  float: right;
+  width: 5em;
+  height: 1em;
 }
 
 .specifice .price{
