@@ -103,7 +103,7 @@ div #add-funds-btn:hover{
   color: white;
 }
 
-div input[type = "submit"]{
+div #add-money-submit{
   border:0;
   background: none;
   text-align: center;
@@ -116,7 +116,7 @@ div input[type = "submit"]{
   transition: 0.25s;
   cursor: pointer;
 }
-div input[type = "submit"]:hover{
+div #add-money-submit:hover{
   background: #670000;
   color: white;
 }
